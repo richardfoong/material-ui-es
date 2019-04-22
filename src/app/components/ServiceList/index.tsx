@@ -17,7 +17,7 @@ const styles = (theme:any) => ({
   },
   paper: {
     height: 140,
-    width: 100,
+    // maxWidth: 100,
     margin: 'auto'
   },
   control: {
@@ -34,11 +34,11 @@ const itemsArray = [1,2,3,4,5,6,7,8,9];
 const ServiceListComponent = ({classes}: any) => {
 
   return (
-    <Grid container className={classes.root} spacing={8}>
+    <Grid container className={classes.root}>
       <Grid item className={classes.parent} xs={8}>
         <Grid container className={classes.items} justify="center" spacing={8}>
           {itemsArray.map(value => (
-            <Grid key={value} item className={classes.item} xs={6} md={4} xl={3}>
+            <Grid key={value} item className={classes.item} xs={4} sm={4} md={3} xl={4}>
               <Paper className={classes.paper} />
             </Grid>
           ))}
