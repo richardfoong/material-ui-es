@@ -14,11 +14,12 @@
   "main": "index.js",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --hot --progress --color --port 3000 --open",
     "build": "webpack -p --progress --colors",
-    "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\""
+    "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "delete:deploy": "aws s3 rm s3://pos-es --include \"/*\" --recursive --profile ie",
+    "deploy": "npm run build && npm run delete:deploy && aws s3 cp dist/ s3://pos-es --include \"*\" --recursive --profile ie --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --cache-control max-age=0"
   },
   "license": "MIT",
   "devDependencies": {
