@@ -9,7 +9,7 @@ const styles = (theme:any) => ({
   root: {
     flexGrow: 1,
     alignItems: "center",
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
   },
   parent: {
     alignItems: 'center',
@@ -26,13 +26,13 @@ const styles = (theme:any) => ({
   items: {
   },
   item: {
+    backgroundColor: 'red',
   }
 });
 
 const itemsArray = [1,2,3,4,5,6,7,8,9];
 
 const ServiceListComponent = ({classes}: any) => {
-
   return (
     <Grid container className={classes.root}>
       <Grid item className={classes.parent} xs={8}>
