@@ -40,10 +40,10 @@ function CustomizedInputBase(props : StyleProps & Props) {
       <IconButton className={classes.iconButton} aria-label="Menu">
         <MenuIcon />
       </IconButton>
-      <InputBase className={classes.input} placeholder="Search Google Maps" />
+      <InputBase className={classes.input} placeholder="Enter key or search item" />
       <Divider className={classes.divider} />
       <IconButton className={classes.iconButton} aria-label="Search">
-        <SearchIcon />
+        <SearchIcon/>
       </IconButton>
     </Paper>
   );
