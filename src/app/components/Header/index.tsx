@@ -1,27 +1,51 @@
 import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, createStyles } from '@material-ui/core/styles';
+import FormLabel from '@material-ui/core/FormLabel';
+import { Logo, Search, Cart } from 'app/icons';
 
 export namespace Header {
   export interface Props {
   }
 }
 
-const styles = () => ({
+const styles = createStyles({
   root: {
     height: '4rem',
     backgroundColor: '#292D33',
     boxShadow: '0px 2px 3px rgba(0, 0, 0, 0.0393739)',
     width: '100%',
+    alignItems: 'center',
+  },
+  logo: {
+    margin: '0 1rem',
+
+  },
+  labelText: {
+    color: 'white',
+    lineHeight: '4rem',
+    margin: '0 1rem',
+    fontSize: '1.125rem',
+  },
+  rightIconPanel: {
+    width: 'auto',
+    margin: '0 1rem 0 auto',
   }
 });
 
-const Header = ({ classes }: any) => {
+const HeaderComponent = ({ classes }: any) => {
   return (
-    <Grid className={classes.root} xs={12} sm={12} md={12} lg={12} xl={12}>
-
+    <Grid container className={classes.root} xs={12} direction="row">
+      <Logo className={classes.logo} />
+      <FormLabel className={classes.labelText}>Cart</FormLabel>
+      <FormLabel className={classes.labelText}>Transactions</FormLabel>
+      <FormLabel className={classes.labelText}>Cash</FormLabel>
+      <Grid container className={classes.rightIconPanel} direction="row" alignContent="flex-end" spacing={8}>
+        <Search />
+        <Cart />
+      </Grid>
     </Grid>
   )
 };
 
-export default withStyles(styles)(Header);
+export const Header = withStyles(styles)(HeaderComponent);

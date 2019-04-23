@@ -19,6 +19,7 @@
     "build": "webpack -p --progress --colors",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "delete:deploy": "aws s3 rm s3://pos-es --include \"/*\" --recursive --profile ie",
+    "clean": "rimraf node_modules",
     "deploy": "npm run build && npm run delete:deploy && aws s3 cp dist/ s3://pos-es --include \"*\" --recursive --profile ie --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --cache-control max-age=0"
   },
   "license": "MIT",
@@ -51,6 +52,7 @@
     "prettier": "^1.15.3",
     "react-hot-loader": "^4.6.3",
     "redux-devtools-extension": "^2.13.7",
+    "rimraf": "^2.6.3",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
     "typescript": "^3.2.4",
@@ -62,6 +64,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "@types/material-ui": "^0.21.6",
     "classnames": "^2.2.6",
     "node-sass": "^4.11.0",
     "react": "^16.8.1",
