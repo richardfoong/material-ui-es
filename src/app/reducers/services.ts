@@ -9,6 +9,6 @@ const initialState: RootState.ServicesState = [{
 }];
 
 export const servicesReducer = handleActions<RootState.ServicesState, ServiceModel>({
-  
+  '': (state) =>  state
 },
   initialState);
