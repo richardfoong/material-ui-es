@@ -2,6 +2,7 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 import { FormLabel } from '@material-ui/core';
+import Search from './search';
 
 const Styles = createStyles({
   root: {
@@ -16,19 +17,28 @@ const Styles = createStyles({
     fontSize: '1.125rem',
     lineHeight: '2rem',
     textAlign: 'center',
-    margin: 'auto',
+    margin: 'auto auto 0.3rem auto',
   },
   scanText: {
     fontFamily: 'AP Letter',
     fontSize: '2.5rem',
     lineHeight: '3.5rem',
     textAlign: 'center',
+    color: 'white',
+    margin: '0 auto auto auto',
+  },
+  search: {
+    position: 'absolute',
+    top: '16rem',
+    left: '50%',
+    width: '70%',
+    transform: 'translateX(-50%)',
   }
 });
 
 interface Props { classes: { [className in keyof typeof Styles]: string } };
 
-const BackgroundPanel = ({ classes }: Props) => {
+const BackgroundPanelComponent = ({ classes }: Props) => {
   return (
     <Grid container className={classes.root} direction='column'>
       <FormLabel className={classes.welcomeText}>Welcome to the new POS</FormLabel>
@@ -37,10 +47,13 @@ const BackgroundPanel = ({ classes }: Props) => {
   )
 };
 
-const SearchComponent = ({ classes }: Props) => {
+const Main = ({ classes }: Props) => {
   return (
-    <BackgroundPanel classes={classes} />
+    <Grid container>
+      <BackgroundPanelComponent classes={classes} />
+      <Search styles={Styles.search}/>
+    </Grid>
   )
 };
 
-export const Search = withStyles(Styles)(SearchComponent);
+export default withStyles(Styles)(Main);
