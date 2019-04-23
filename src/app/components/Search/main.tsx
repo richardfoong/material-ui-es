@@ -29,7 +29,7 @@ const Styles = createStyles({
   },
   search: {
     position: 'absolute',
-    top: '16rem',
+    top: '19rem',
     left: '50%',
     width: '70%',
     transform: 'translateX(-50%)',
