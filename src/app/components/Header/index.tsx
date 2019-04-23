@@ -35,7 +35,7 @@ const styles = createStyles({
 
 const HeaderComponent = ({ classes }: any) => {
   return (
-    <Grid container className={classes.root} xs={12} direction="row">
+    <Grid container className={classes.root} direction="row">
       <Logo className={classes.logo} />
       <FormLabel className={classes.labelText}>Cart</FormLabel>
       <FormLabel className={classes.labelText}>Transactions</FormLabel>

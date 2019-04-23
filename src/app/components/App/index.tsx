@@ -4,7 +4,7 @@ import { ServiceList } from "app-components/ServiceList";
 import { Header } from "app-components/Header";
 
 export default () => (
-  <Grid direction='column'>
+  <Grid container direction='column'>
     <Header />
     <ServiceList />
   </Grid>
