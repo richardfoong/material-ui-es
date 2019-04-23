@@ -1,31 +1,27 @@
 import * as React from 'react';
-import { TodoTextInput } from '../TodoTextInput';
-import { TodoActions } from 'app/actions/todos';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
 export namespace Header {
   export interface Props {
-    addTodo: typeof TodoActions.addTodo;
   }
 }
 
-export class Header extends React.Component<Header.Props> {
-  constructor(props: Header.Props, context?: any) {
-    super(props, context);
-    this.handleSave = this.handleSave.bind(this);
+const styles = () => ({
+  root: {
+    height: '4rem',
+    backgroundColor: '#292D33',
+    boxShadow: '0px 2px 3px rgba(0, 0, 0, 0.0393739)',
+    width: '100%',
   }
+});
 
-  handleSave(text: string) {
-    if (text.length) {
-      this.props.addTodo({ text });
-    }
-  }
+const Header = ({ classes }: any) => {
+  return (
+    <Grid className={classes.root} xs={12} sm={12} md={12} lg={12} xl={12}>
 
-  render() {
-    return (
-      <header>
-        <h1>Todos</h1>
-        <TodoTextInput newTodo onSave={this.handleSave} placeholder="What needs to be done?" />
-      </header>
-    );
-  }
-}
+    </Grid>
+  )
+};
+
+export default withStyles(styles)(Header);
