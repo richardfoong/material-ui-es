@@ -68,8 +68,10 @@ const Search = (props: StyleProps & Props) => {
         setServicesForSearch(selectedOption.map((s: any) => s.value));
       }}
       options={allServices}
-      onInputChange={(e: string) => {
-        filterService(e);
+      onInputChange={(e: string, {action}) => {
+        if (action === 'input-change') {
+          filterService(e);
+        }
       }}
       placeholder="Enter key or search item"
       noOptionsMessage={() => null}
