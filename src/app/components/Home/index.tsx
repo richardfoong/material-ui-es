@@ -4,16 +4,25 @@ import { ServiceList } from "app/components/ServiceList";
 import { Header } from "app/components/Header";
 import { SearchMain } from "app/components/Search";
 import { RootState } from 'app/reducers';
+import { withStyles, createStyles } from '@material-ui/core/styles';
 
 
 export interface HomeProps {
   services: RootState.ServicesState
 }
 
-export default (props: HomeProps) => (
-  <Grid container direction='column'>
+const styles = createStyles({
+  root: {
+    backgroundColor: 'lightgray',
+  }
+});
+
+interface StyleProps { classes: { [className in keyof typeof styles]: string } };
+
+export default withStyles(styles)((props: HomeProps & StyleProps) => (
+  <Grid container direction='column' className={props.classes.root}>
     <Header />
     <SearchMain />
     <ServiceList services={props.services} />
   </Grid>
-);
+));

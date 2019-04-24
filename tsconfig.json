@@ -15,7 +15,15 @@
     "lib": ["es6", "es7", "dom"],
     "baseUrl": "src",
     "paths": {
-      "app/*": ["./app/*"]
+      "app/*": ["./app/*"],
+      "@ap-components/*": ["./app/components"],
+      "@ap-containers/*": ["./app/containers"],
+      "@ap-actions/*": ["./app/actions"],
+      "@ap-reducers/*": ["./app/reducers"],
+      "@ap-icons/*": ["./app/icons"],
+      "@ap-assets-icons/*": ["../assets/icons"],
+      "@ap-models/*": ["./app/models"],
+      "@ap-utils/*": ["./app/utils"],
     }
   },
   "exclude": ["build", "node_modules"]

@@ -1,15 +1,19 @@
 import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import FormLabel from '@material-ui/core/FormLabel';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 import * as PropTypes from 'prop-types';
 import { RootState } from 'app/reducers';
+import { CartIcon } from '@ap-icons/';
 
 const styles = createStyles({
   root: {
     flexGrow: 1,
     alignItems: "center",
-    // backgroundColor: 'red',
+    backgroundColor: 'lightgray',
+    width: '70%',
+    alignSelf: 'center',
+    marginTop: '3rem',
   },
   parent: {
     alignItems: 'center',
@@ -18,16 +22,24 @@ const styles = createStyles({
   paper: {
     height: 140,
     // maxWidth: 100,
-    backgroundColor: 'red',
+    backgroundColor: 'white',
     margin: 'auto'
   },
-  items: {
-  },
   item: {
+  },
+  itemLabel: {
+    marginBottom: 'auto',
+    fontFamily: 'AP Letter',
+    fontSize: '1.125rem',
+    lineHeight: '1.25rem',
+    textAlign: 'center',
+    color: '#382F2D',
+  },
+  itemIcon: {
+    marginTop: 'auto',
+    marginBottom: '0.5rem',
   }
 });
-
-const itemsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 interface Props {
   services: RootState.ServicesState;
@@ -35,13 +47,15 @@ interface Props {
 }
 
 const ServiceListComponent = ({ classes, services }: Props) => {
-  console.log('services:', services);
   return (
     <Grid container className={classes.root}>
-      <Grid container className={classes.parent} spacing={8}>
-        {itemsArray.map(value => (
-          <Grid key={value} item className={classes.item} xs={4} sm={4} md={3} xl={4}>
-            <Paper className={classes.paper} />
+      <Grid container className={classes.parent} spacing={16}>
+        {services.map(value => (
+          <Grid key={value.id} item className={classes.item} xs={6} sm={4} md={3} xl={4}>
+            <Grid container className={classes.paper} direction="column" alignItems='center'>
+              <CartIcon {...styles.itemIcon} />
+              <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
+            </Grid>
           </Grid>
         ))}
       </Grid>

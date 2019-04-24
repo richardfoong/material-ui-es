@@ -2,7 +2,8 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Logo, Search, Cart } from 'app/icons';
+import { Logo, Search } from 'app/icons';
+import { CartIcon } from '@ap-icons/';
 
 export namespace Header {
   export interface Props {
@@ -42,7 +43,7 @@ const HeaderComponent = ({ classes }: any) => {
       <FormLabel className={classes.labelText}>Cash</FormLabel>
       <Grid container className={classes.rightIconPanel} direction="row" alignContent="flex-end" spacing={8}>
         <Search />
-        <Cart />
+        <CartIcon />
       </Grid>
     </Grid>
   )

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
 
+const CART_ICON = require('../../assets/icons/ap-cart.svg');
+
 export const Logo = (props: SvgIconProps) => (
   <SvgIcon {...props}>
     <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5312 28.875C24.9353 28.875 30.9375 22.8728 30.9375 15.4688C30.9375 8.06468 24.9353 2.0625 17.5312 2.0625C10.1272 2.0625 4.125 8.06468 4.125 15.4688C4.125 22.8728 10.1272 28.875 17.5312 28.875Z" fill="white" />
@@ -32,3 +34,14 @@ export const Cart = (props: SvgIconProps) => (
     </g>
   </SvgIcon>
 );
+
+interface SVGProps {
+  path: string;
+  styles: React.CSSProperties;
+};
+
+export const SVGComponent = (props: SVGProps) => (
+  <img src={props.path} style={props.styles} />
+);
+
+export const CartIcon = (props: React.CSSProperties) => <SVGComponent path={CART_ICON} styles={props} />

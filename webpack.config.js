@@ -30,7 +30,12 @@ module.exports = {
     mainFields: ['module', 'browser', 'main'],
     alias: {
       'app': path.resolve(__dirname, 'src', 'app'),
-      'app-components': path.resolve(__dirname, 'src', 'app', 'components'),
+      '@ap-components': path.resolve(__dirname, 'src', 'app', 'components'),
+      '@ap-actions': path.resolve(__dirname, 'src', 'app', 'actions'),
+      '@ap-containers': path.resolve(__dirname, 'src', 'app', 'containers'),
+      '@ap-reducers': path.resolve(__dirname, 'src', 'app', 'reducers'),
+      '@ap-utils': path.resolve(__dirname, 'src', 'app', 'utils'),
+      '@ap-icons': path.resolve(__dirname, 'src', 'app', 'icons')
     }
   },
   module: {
