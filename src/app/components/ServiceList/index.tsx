@@ -20,10 +20,11 @@ const styles = createStyles({
     margin: 'auto',
   },
   paper: {
-    height: 140,
-    // maxWidth: 100,
+    height: '7rem',
     backgroundColor: 'white',
-    margin: 'auto'
+    margin: 'auto',
+    boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.2)',
+    borderRadius: '3px',
   },
   item: {
   },
