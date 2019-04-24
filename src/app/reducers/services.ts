@@ -43,12 +43,13 @@ export const initialState: RootState.ServicesState = {
   searched: []
 };
 
+const getFilteredServices = (state: RootState.ServicesState, searched: ServiceModel[]) => state.all.filter(s => !searched.find((service:ServiceModel) => service.id === s.id));
+
 export const servicesReducer = handleActions<RootState.ServicesState, any>({
   [ServiceActions.Type.FILTER_SERVICE_SEARCH]: (state, { payload = '' }) => {
     const { searched} = state;
     if (payload) {
-      const filteredServices = state.all.filter((s: ServiceModel) => s.text.toLowerCase().includes(payload.toLowerCase()))
-        .filter((s: ServiceModel) => !searched.find(service => s.id === service.id));
+      const filteredServices = state.all.filter((s: ServiceModel) => s.text.toLowerCase().includes(payload.toLowerCase()));
       return { ...state, filtered: filteredServices };
     }
     return { ...state, filtered: state.all.filter(s => !searched.find(service => service.id === s.id)) };
@@ -60,7 +61,8 @@ export const servicesReducer = handleActions<RootState.ServicesState, any>({
         state.searched.push(searched);
       }
     }
-    return { ...state };
+    const filtered = getFilteredServices(state, state.searched);
+    return { ...state, filtered };
   },
   [ServiceActions.Type.REMOVE_SERVICE_FROM_SEARCH]: (state, action) => {
     if (action.payload) {
@@ -72,9 +74,9 @@ export const servicesReducer = handleActions<RootState.ServicesState, any>({
     let { filtered } = state;
     let { searched } = state;
     if (action.payload) {
-      searched = state.all.filter(s => action.payload.includes(s.id));
+      searched = action.payload.map((id: number) => state.all.find(s => s.id === id));
     }
-    filtered = state.all.filter(s => !searched.find((service:ServiceModel) => service.id === s.id));
+    filtered = getFilteredServices(state, searched);
     return { ...state, searched, filtered };
   }
 },

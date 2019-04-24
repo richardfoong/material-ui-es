@@ -64,9 +64,7 @@ const Search = (props: StyleProps & Props) => {
       value={searchedServices}
       isMulti
       onChange={(selectedOption: any) => {
-        console.log('on change ', selectedOption);
-        // setSelectedOption(selectedOption);
-        setServicesForSearch(selectedOption.map((s) => s.value));
+        setServicesForSearch(selectedOption.map((s: any) => s.value));
       }}
       options={allServices}
       onInputChange={(e: string) => {
