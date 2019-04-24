@@ -51,7 +51,7 @@ const ServiceListComponent = ({ classes, services }: Props) => {
   return (
     <Grid container className={classes.root}>
       <Grid container className={classes.parent} spacing={16}>
-        {services.map(value => (
+        {services.filtered.map(value => (
           <Grid key={value.id} item className={classes.item} xs={6} sm={4} md={3} xl={4}>
             <Grid container className={classes.paper} direction="column" alignItems='center'>
               <CartIcon {...styles.itemIcon} />
