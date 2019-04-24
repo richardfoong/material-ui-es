@@ -68,7 +68,8 @@ export const servicesReducer = handleActions<RootState.ServicesState, any>({
     if (action.payload) {
       state.searched = state.searched.filter(s => s.id !== action.payload);
     }
-    return { ...state };
+    const filtered = getFilteredServices(state, state.searched);
+    return { ...state, filtered };
   },
   [ServiceActions.Type.SET_SERVICES_FOR_SEARCH]: (state, action) => {
     let { filtered } = state;

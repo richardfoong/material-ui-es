@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { ServiceActions } from '@ap-actions/';
 import Select from 'react-select';
 import { RootState } from '@ap-reducers/';
+import Chip from '@material-ui/core/Chip';
 
 const Styles = {
   root: {
@@ -58,7 +59,7 @@ interface Props { styles: React.CSSProperties, actions: ServiceActions, services
 const Search = (props: StyleProps & Props) => {
   const allServices = props.services.all.map(service => ({ value: service.id, label: service.text }));
   const searchedServices = props.services.searched.map(s => ({ value: s.id, label: s.text }));
-  const { setServicesForSearch, filterService } = props.actions;
+  const { setServicesForSearch, filterService, removeServiceFromSearch } = props.actions;
   return (
     <Select
       value={searchedServices}
@@ -72,9 +73,30 @@ const Search = (props: StyleProps & Props) => {
       }}
       placeholder="Enter key or search item"
       noOptionsMessage={() => null}
-      components={{ Menu: () => null, DropdownIndicator: () => null }}
+      autoFocus={false}
+      components={{
+        Menu: () => null, DropdownIndicator: () => null,
+        MultiValueLabel: (base) => {
+          // console.log('base:', base);
+          return (
+            <Chip label={base.data.label} color="primary"
+              style={{ margin: 0, color: 'white', backgroundColor: '#008091', border: '1px solid #008091' }}
+              onDelete={() => {
+                removeServiceFromSearch(base.data.value);
+              }} />);
+        }
+      }}
+      styles={
+        {
+          multiValueRemove: (styles, { data }) => {
+            return { ...styles, backgroundColor: 'transparent', display: 'none' };
+          },
+          multiValue: (styles) => {
+            return { ...styles, backgroundColor: 'transparent' };
+          },
+        }
+      }
     />);
 };
 
 export default withStyles(Styles)(Search);
-// export default withStyles(Styles)(CustomizedInputBase);
