@@ -56,7 +56,7 @@ export const servicesReducer = handleActions<RootState.ServicesState, any>({
   },
   [ServiceActions.Type.ADD_SERVICE_ON_SEARCH]: (state, action) => {
     if (action.payload) {
-      const searched = state.all.find((s: ServiceModel) => (s.text.toLowerCase().includes(action.payload.toLowerCase())));
+      const searched = state.all.find((s: ServiceModel) => (s.id === action.payload.id));
       if (searched) {
         state.searched.push(searched);
       }

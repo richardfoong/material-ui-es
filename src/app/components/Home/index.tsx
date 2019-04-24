@@ -24,6 +24,6 @@ export default withStyles(styles)((props: HomeProps & StyleProps) => (
   <Grid container direction='column' className={props.classes.root}>
     <Header />
     <SearchMain actions={props.actions} services={props.services} />
-    <ServiceList services={props.services} />
+    <ServiceList services={props.services} actions={props.actions} />
   </Grid>
 ));

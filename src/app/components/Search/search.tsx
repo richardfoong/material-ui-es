@@ -72,7 +72,7 @@ const Search = (props: StyleProps & Props) => {
       }}
       placeholder="Enter key or search item"
       noOptionsMessage={() => null}
-      components={{ Menu: () => null }}
+      components={{ Menu: () => null, DropdownIndicator: () => null }}
     />);
 };
 

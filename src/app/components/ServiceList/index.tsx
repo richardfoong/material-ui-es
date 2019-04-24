@@ -5,6 +5,8 @@ import { withStyles, createStyles } from '@material-ui/core/styles';
 import * as PropTypes from 'prop-types';
 import { RootState } from 'app/reducers';
 import { CartIcon } from '@ap-icons/';
+import { ServiceActions } from 'app/actions';
+import { ServiceModel } from 'app/models';
 
 const styles = createStyles({
   root: {
@@ -45,15 +47,16 @@ const styles = createStyles({
 interface Props {
   services: RootState.ServicesState;
   classes: { [className in keyof typeof styles]: string };
+  actions: ServiceActions;
 }
 
-const ServiceListComponent = ({ classes, services }: Props) => {
+const ServiceListComponent = ({ actions, classes, services }: Props) => {
   return (
     <Grid container className={classes.root}>
       <Grid container className={classes.parent} spacing={16}>
-        {services.filtered.map(value => (
+        {services.filtered.map((value: ServiceModel) => (
           <Grid key={value.id} item className={classes.item} xs={6} sm={4} md={3} xl={4}>
-            <Grid container className={classes.paper} direction="column" alignItems='center'>
+            <Grid container className={classes.paper} direction="column" alignItems='center' onClick={() => actions.addServiceOnSearch(value)}>
               <CartIcon {...styles.itemIcon} />
               <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
             </Grid>
