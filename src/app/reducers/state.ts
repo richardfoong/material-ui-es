@@ -8,5 +8,5 @@ export interface RootState {
 
 export namespace RootState {
   export type TodoState = TodoModel[];
-  export type ServicesState = {all: ServiceModel[], filtered: ServiceModel[], searchedServices: ServiceModel[]};
+  export type ServicesState = {all: ServiceModel[], filtered: ServiceModel[], searched: ServiceModel[]};
 }

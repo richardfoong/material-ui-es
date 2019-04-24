@@ -57,7 +57,7 @@ interface Props { styles: React.CSSProperties, actions: ServiceActions, services
 
 const Search = (props: StyleProps & Props) => {
   const allServices = props.services.all.map(service => ({ value: service.id, label: service.text }));
-  const searchedServices = props.services.searchedServices.map(s => ({ value: s.id, label: s.text }));
+  const searchedServices = props.services.searched.map(s => ({ value: s.id, label: s.text }));
   const { setServicesForSearch, filterService } = props.actions;
   return (
     <Select
@@ -66,7 +66,7 @@ const Search = (props: StyleProps & Props) => {
       onChange={(selectedOption: any) => {
         console.log('on change ', selectedOption);
         // setSelectedOption(selectedOption);
-        setServicesForSearch(selectedOption.map(s => s.value));
+        setServicesForSearch(selectedOption.map((s) => s.value));
       }}
       options={allServices}
       onInputChange={(e: string) => {

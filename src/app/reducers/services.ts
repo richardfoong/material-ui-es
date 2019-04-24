@@ -40,38 +40,42 @@ const allServices = [{
 export const initialState: RootState.ServicesState = {
   all: allServices,
   filtered: allServices,
-  searchedServices: []
+  searched: []
 };
 
 export const servicesReducer = handleActions<RootState.ServicesState, any>({
   [ServiceActions.Type.FILTER_SERVICE_SEARCH]: (state, { payload = '' }) => {
+    const { searched} = state;
     if (payload) {
-      const filteredServices = state.all.filter((s: ServiceModel) => s.text.toLowerCase().includes(payload.toLowerCase()));
+      const filteredServices = state.all.filter((s: ServiceModel) => s.text.toLowerCase().includes(payload.toLowerCase()))
+        .filter((s: ServiceModel) => !searched.find(service => s.id === service.id));
       return { ...state, filtered: filteredServices };
     }
-    return { ...state, filtered: state.all };
+    return { ...state, filtered: state.all.filter(s => !searched.find(service => service.id === s.id)) };
   },
   [ServiceActions.Type.ADD_SERVICE_ON_SEARCH]: (state, action) => {
     if (action.payload) {
       const searched = state.all.find((s: ServiceModel) => (s.text.toLowerCase().includes(action.payload.toLowerCase())));
       if (searched) {
-        state.searchedServices.push(searched);
+        state.searched.push(searched);
       }
     }
     return { ...state };
   },
   [ServiceActions.Type.REMOVE_SERVICE_FROM_SEARCH]: (state, action) => {
     if (action.payload) {
-      state.searchedServices = state.searchedServices.filter(s => s.id !== action.payload);
+      state.searched = state.searched.filter(s => s.id !== action.payload);
     }
     return { ...state };
   },
   [ServiceActions.Type.SET_SERVICES_FOR_SEARCH]: (state, action) => {
+    let { filtered } = state;
+    let searched: ServiceModel[] = [];
     if (action.payload) {
-      const searchedServices = state.all.filter(s => action.payload.includes(s.id));
-      return { ...state, searchedServices };
+      searched = state.all.filter(s => action.payload.includes(s.id));
     }
-    return { ...state };
+    filtered = state.filtered.filter(s => !searched.find((service:ServiceModel) => service.id === s.id));
+    return { ...state, searched, filtered };
   }
 },
   initialState);
