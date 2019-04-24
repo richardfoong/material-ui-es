@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import { ServiceActions } from '@ap-actions/';
 
 const Styles = {
   root: {
@@ -30,7 +31,7 @@ const Styles = {
 
 interface StyleProps { classes: { [className in keyof typeof Styles]: string } };
 
-interface Props {styles : React.CSSProperties};
+interface Props {styles : React.CSSProperties, actions: ServiceActions};
 
 function CustomizedInputBase(props : StyleProps & Props) {
   const { classes } = props;
@@ -40,7 +41,10 @@ function CustomizedInputBase(props : StyleProps & Props) {
       <IconButton className={classes.iconButton} aria-label="Menu">
         <MenuIcon />
       </IconButton>
-      <InputBase className={classes.input} placeholder="Enter key or search item" />
+      <InputBase className={classes.input} placeholder="Enter key or search item"
+        onChange={(event) => {
+          props.actions.filterService(event.target.value);
+        }} />
       <Divider className={classes.divider} />
       <IconButton className={classes.iconButton} aria-label="Search">
         <SearchIcon/>

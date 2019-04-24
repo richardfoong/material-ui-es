@@ -2,6 +2,7 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 import { FormLabel } from '@material-ui/core';
+import { ServiceActions } from '@ap-actions/';
 import Search from './search';
 
 const Styles = createStyles({
@@ -37,7 +38,9 @@ const Styles = createStyles({
   }
 });
 
-interface Props { classes: { [className in keyof typeof Styles]: string } };
+interface Props {
+  classes: { [className in keyof typeof Styles]: string },
+};
 
 const BackgroundPanelComponent = ({ classes }: Props) => {
   return (
@@ -48,11 +51,15 @@ const BackgroundPanelComponent = ({ classes }: Props) => {
   )
 };
 
-const Main = ({ classes }: Props) => {
+interface MainProps extends Props {
+  actions: ServiceActions;
+}
+
+const Main = ({ classes, actions }: MainProps) => {
   return (
     <Grid container>
       <BackgroundPanelComponent classes={classes} />
-      <Search styles={Styles.search}/>
+      <Search styles={Styles.search} actions={actions} />
     </Grid>
   )
 };

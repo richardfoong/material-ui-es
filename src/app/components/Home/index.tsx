@@ -5,10 +5,11 @@ import { Header } from "app/components/Header";
 import { SearchMain } from "app/components/Search";
 import { RootState } from 'app/reducers';
 import { withStyles, createStyles } from '@material-ui/core/styles';
-
+import { ServiceActions } from '@ap-actions/';
 
 export interface HomeProps {
-  services: RootState.ServicesState
+  services: RootState.ServicesState;
+  actions: ServiceActions;
 }
 
 const styles = createStyles({
@@ -22,7 +23,7 @@ interface StyleProps { classes: { [className in keyof typeof styles]: string } }
 export default withStyles(styles)((props: HomeProps & StyleProps) => (
   <Grid container direction='column' className={props.classes.root}>
     <Header />
-    <SearchMain />
+    <SearchMain actions={props.actions} />
     <ServiceList services={props.services} />
   </Grid>
 ));

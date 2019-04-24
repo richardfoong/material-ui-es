@@ -2,6 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { RootState } from 'app/reducers';
 import Home, { HomeProps } from 'app/components/Home';
+import { ServiceActions } from 'app/actions';
+import { bindActionCreators, Dispatch } from 'redux';
 
 const HomeContainer = (props:HomeProps) => {
   return <Home {...props} />
@@ -13,6 +15,8 @@ const mapStateToProps = (state: RootState) => {
   }
 };
 
-const mapDispatchToProps = () => {};
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  actions: bindActionCreators(ServiceActions, dispatch)
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
