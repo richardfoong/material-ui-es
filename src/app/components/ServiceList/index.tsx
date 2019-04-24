@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, createStyles } from '@material-ui/core/styles';
 import * as PropTypes from 'prop-types';
+import { RootState } from 'app/reducers';
 
-
-const styles = () => ({
+const styles = createStyles({
   root: {
     flexGrow: 1,
     alignItems: "center",
@@ -27,17 +27,23 @@ const styles = () => ({
   }
 });
 
-const itemsArray = [1,2,3,4,5,6,7,8,9];
+const itemsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const ServiceListComponent = ({classes}: any) => {
+interface Props {
+  services: RootState.ServicesState;
+  classes: { [className in keyof typeof styles]: string };
+}
+
+const ServiceListComponent = ({ classes, services }: Props) => {
+  console.log('services:', services);
   return (
     <Grid container className={classes.root}>
       <Grid container className={classes.parent} spacing={8}>
-          {itemsArray.map(value => (
-            <Grid key={value} item className={classes.item} xs={4} sm={4} md={3} xl={4}>
-              <Paper className={classes.paper} />
-            </Grid>
-          ))}
+        {itemsArray.map(value => (
+          <Grid key={value} item className={classes.item} xs={4} sm={4} md={3} xl={4}>
+            <Paper className={classes.paper} />
+          </Grid>
+        ))}
       </Grid>
     </Grid>
   );
@@ -47,4 +53,4 @@ ServiceListComponent.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export const ServiceList = withStyles(styles)(ServiceListComponent)
+export const ServiceList = withStyles(styles)<any>(ServiceListComponent);

@@ -1,1 +1,2 @@
-export * from './logger';
+import logger from 'redux-logger'
+export {logger};

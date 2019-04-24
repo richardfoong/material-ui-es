@@ -9,7 +9,6 @@ export function configureStore(initialState?: RootState): Store<RootState> {
   if (process.env.NODE_ENV !== 'production') {
     middleware = composeWithDevTools(middleware);
   }
-
   const store = createStore(rootReducer as any, initialState as any, middleware) as Store<
     RootState
   >;
