@@ -39,17 +39,39 @@ const allServices = [{
 
 export const initialState: RootState.ServicesState = {
   all: allServices,
-  filtered: allServices
+  filtered: allServices,
+  searchedServices: []
 };
 
-export const servicesReducer = handleActions<RootState.ServicesState, string>({
-  [ServiceActions.Type.FILTER_SERVICE_SEARCH]: (state, action) => {
-    if (action.payload) {
-      const payload: string = action.payload;
-      const filteredServices = state.all.filter((s: ServiceModel) => s.text.includes(payload));
-      return {...state, filtered: filteredServices};
+export const servicesReducer = handleActions<RootState.ServicesState, any>({
+  [ServiceActions.Type.FILTER_SERVICE_SEARCH]: (state, { payload = '' }) => {
+    if (payload) {
+      const filteredServices = state.all.filter((s: ServiceModel) => s.text.toLowerCase().includes(payload.toLowerCase()));
+      return { ...state, filtered: filteredServices };
     }
-    return {...state, filtered: state.all};
+    return { ...state, filtered: state.all };
+  },
+  [ServiceActions.Type.ADD_SERVICE_ON_SEARCH]: (state, action) => {
+    if (action.payload) {
+      const searched = state.all.find((s: ServiceModel) => (s.text.toLowerCase().includes(action.payload.toLowerCase())));
+      if (searched) {
+        state.searchedServices.push(searched);
+      }
+    }
+    return { ...state };
+  },
+  [ServiceActions.Type.REMOVE_SERVICE_FROM_SEARCH]: (state, action) => {
+    if (action.payload) {
+      state.searchedServices = state.searchedServices.filter(s => s.id !== action.payload);
+    }
+    return { ...state };
+  },
+  [ServiceActions.Type.SET_SERVICES_FOR_SEARCH]: (state, action) => {
+    if (action.payload) {
+      const searchedServices = state.all.filter(s => action.payload.includes(s.id));
+      return { ...state, searchedServices };
+    }
+    return { ...state };
   }
 },
   initialState);
