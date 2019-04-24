@@ -59,7 +59,9 @@ const Main = ({ classes, actions }: MainProps) => {
   return (
     <Grid container>
       <BackgroundPanelComponent classes={classes} />
-      <Search styles={Styles.search} actions={actions} />
+      <Grid className={classes.search}>
+        <Search styles={Styles.search} actions={actions} />
+      </Grid>
     </Grid>
   )
 };

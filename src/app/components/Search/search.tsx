@@ -7,6 +7,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { ServiceActions } from '@ap-actions/';
+import Select from 'react-select';
+
 
 const Styles = {
   root: {
@@ -31,9 +33,9 @@ const Styles = {
 
 interface StyleProps { classes: { [className in keyof typeof Styles]: string } };
 
-interface Props {styles : React.CSSProperties, actions: ServiceActions};
+interface Props { styles: React.CSSProperties, actions: ServiceActions };
 
-function CustomizedInputBase(props : StyleProps & Props) {
+function CustomizedInputBase(props: StyleProps & Props) {
   const { classes } = props;
 
   return (
@@ -47,10 +49,33 @@ function CustomizedInputBase(props : StyleProps & Props) {
         }} />
       <Divider className={classes.divider} />
       <IconButton className={classes.iconButton} aria-label="Search">
-        <SearchIcon/>
+        <SearchIcon />
       </IconButton>
     </Paper>
   );
 }
 
-export default withStyles(Styles)(CustomizedInputBase);
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+];
+
+const Search = (props: StyleProps & Props) => {
+  const [selectedOption, setSelectedOption] = React.useState(options);
+  return (
+    <Select
+      value={selectedOption}
+      // styles={{ control: () => ({ width: '80%' }) }}
+      isMulti
+      defaultValue={[options[0], options[1]]}
+      onChange={(selectedOption: any) => {
+        setSelectedOption({ selectedOption });
+        console.log(`Option selected:`, selectedOption);
+      }}
+      options={options}
+    />);
+};
+
+export default withStyles(Styles)(Search);
+// export default withStyles(Styles)(CustomizedInputBase);
