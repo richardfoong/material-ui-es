@@ -70,11 +70,11 @@ export const servicesReducer = handleActions<RootState.ServicesState, any>({
   },
   [ServiceActions.Type.SET_SERVICES_FOR_SEARCH]: (state, action) => {
     let { filtered } = state;
-    let searched: ServiceModel[] = [];
+    let { searched } = state;
     if (action.payload) {
       searched = state.all.filter(s => action.payload.includes(s.id));
     }
-    filtered = state.filtered.filter(s => !searched.find((service:ServiceModel) => service.id === s.id));
+    filtered = state.all.filter(s => !searched.find((service:ServiceModel) => service.id === s.id));
     return { ...state, searched, filtered };
   }
 },
