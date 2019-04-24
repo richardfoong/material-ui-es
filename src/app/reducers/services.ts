@@ -46,7 +46,7 @@ export const servicesReducer = handleActions<RootState.ServicesState, string>({
   [ServiceActions.Type.FILTER_SERVICE_SEARCH]: (state, action) => {
     if (action.payload) {
       const payload: string = action.payload;
-      const filteredServices = state.all.filter((s: ServiceModel) => s.text.startsWith(payload));
+      const filteredServices = state.all.filter((s: ServiceModel) => s.text.includes(payload));
       return {...state, filtered: filteredServices};
     }
     return {...state, filtered: state.all};

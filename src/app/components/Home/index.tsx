@@ -23,7 +23,7 @@ interface StyleProps { classes: { [className in keyof typeof styles]: string } }
 export default withStyles(styles)((props: HomeProps & StyleProps) => (
   <Grid container direction='column' className={props.classes.root}>
     <Header />
-    <SearchMain actions={props.actions} />
+    <SearchMain actions={props.actions} services={props.services} />
     <ServiceList services={props.services} />
   </Grid>
 ));

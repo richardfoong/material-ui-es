@@ -8,7 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { ServiceActions } from '@ap-actions/';
 import Select from 'react-select';
-
+import { RootState } from '@ap-reducers/';
 
 const Styles = {
   root: {
@@ -33,7 +33,7 @@ const Styles = {
 
 interface StyleProps { classes: { [className in keyof typeof Styles]: string } };
 
-interface Props { styles: React.CSSProperties, actions: ServiceActions };
+interface Props { styles: React.CSSProperties, actions: ServiceActions, services: RootState.ServicesState };
 
 function CustomizedInputBase(props: StyleProps & Props) {
   const { classes } = props;
@@ -55,25 +55,24 @@ function CustomizedInputBase(props: StyleProps & Props) {
   );
 }
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-];
-
 const Search = (props: StyleProps & Props) => {
-  const [selectedOption, setSelectedOption] = React.useState(options);
+  const [selectedOption, setSelectedOption] = React.useState(null);
+  console.log('selected:', selectedOption);
+  const allServices = props.services.all.map(service => ({ value: service.id, label: service.text }));
   return (
     <Select
       value={selectedOption}
-      // styles={{ control: () => ({ width: '80%' }) }}
       isMulti
-      defaultValue={[options[0], options[1]]}
       onChange={(selectedOption: any) => {
-        setSelectedOption({ selectedOption });
-        console.log(`Option selected:`, selectedOption);
+        console.log('on change ', selectedOption);
+        setSelectedOption(selectedOption);
       }}
-      options={options}
+      options={allServices}
+      onInputChange={(e: string) => {
+        props.actions.filterService(e);
+      }}
+      noOptionsMessage={() => null}
+      components={{ Menu: () => null }}
     />);
 };
 
