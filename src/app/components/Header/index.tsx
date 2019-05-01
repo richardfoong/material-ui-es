@@ -5,10 +5,6 @@ import FormLabel from '@material-ui/core/FormLabel';
 import { Logo, Search } from 'app/icons';
 import { CartIcon } from '@ap-icons/';
 
-export namespace Header {
-  export interface Props {
-  }
-}
 
 const styles = createStyles({
   root: {
