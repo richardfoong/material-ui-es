@@ -1,6 +1,6 @@
 import { RootState } from './state';
 import { handleActions } from 'redux-actions';
-import { ServiceActions } from '@ap-actions/';
+import { Type as ServiceActionType} from '@ap-actions/';
 import { ServiceModel } from 'app/models';
 
 const allServices = [{
@@ -46,7 +46,7 @@ export const initialState: RootState.ServicesState = {
 const getFilteredServices = (state: RootState.ServicesState, searched: ServiceModel[]) => state.all.filter(s => !searched.find((service:ServiceModel) => service.id === s.id));
 
 export const servicesReducer = handleActions<RootState.ServicesState, any>({
-  [ServiceActions.Type.FILTER_SERVICE_SEARCH]: (state, { payload = '' }) => {
+  [ServiceActionType.FILTER_SERVICE_SEARCH]: (state, { payload = '' }) => {
     const { searched} = state;
     if (payload) {
       const filteredServices = state.filtered.filter((s: ServiceModel) => s.text.toLowerCase().includes(payload.toLowerCase()));
@@ -54,7 +54,7 @@ export const servicesReducer = handleActions<RootState.ServicesState, any>({
     }
     return { ...state, filtered: state.all.filter(s => !searched.find(service => service.id === s.id)) };
   },
-  [ServiceActions.Type.ADD_SERVICE_ON_SEARCH]: (state, action) => {
+  [ServiceActionType.ADD_SERVICE_ON_SEARCH]: (state, action) => {
     if (action.payload) {
       const searched = state.all.find((s: ServiceModel) => (s.id === action.payload.id));
       if (searched) {
@@ -64,14 +64,14 @@ export const servicesReducer = handleActions<RootState.ServicesState, any>({
     const filtered = getFilteredServices(state, state.searched);
     return { ...state, filtered };
   },
-  [ServiceActions.Type.REMOVE_SERVICE_FROM_SEARCH]: (state, action) => {
+  [ServiceActionType.REMOVE_SERVICE_FROM_SEARCH]: (state, action) => {
     if (action.payload) {
       state.searched = state.searched.filter(s => s.id !== action.payload);
     }
     const filtered = getFilteredServices(state, state.searched);
     return { ...state, filtered };
   },
-  [ServiceActions.Type.SET_SERVICES_FOR_SEARCH]: (state, action) => {
+  [ServiceActionType.SET_SERVICES_FOR_SEARCH]: (state, action) => {
     let { filtered } = state;
     let { searched } = state;
     if (action.payload) {

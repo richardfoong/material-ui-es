@@ -9,7 +9,7 @@ import { ServiceActions } from '@ap-actions/';
 
 export interface HomeProps {
   services: RootState.ServicesState;
-  actions: ServiceActions;
+  actions: typeof ServiceActions;
 }
 
 const styles = createStyles({

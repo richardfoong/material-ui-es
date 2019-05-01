@@ -55,7 +55,7 @@ const styles = createStyles({
 interface Props {
   services: RootState.ServicesState;
   classes: { [className in keyof typeof styles]: string };
-  actions: ServiceActions;
+  actions: typeof ServiceActions;
 }
 
 const ServiceListComponent = ({ actions, classes, services }: Props) => {

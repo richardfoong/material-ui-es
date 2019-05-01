@@ -54,7 +54,7 @@ const BackgroundPanelComponent = ({ classes }: Props) => {
 
 interface MainProps extends Props {
   services: RootState.ServicesState;
-  actions: ServiceActions;
+  actions: typeof ServiceActions;
 }
 
 const Main = ({ classes, actions, services }: MainProps) => {

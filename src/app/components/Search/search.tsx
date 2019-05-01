@@ -34,27 +34,7 @@ const Styles = {
 
 interface StyleProps { classes: { [className in keyof typeof Styles]: string } };
 
-interface Props { styles: React.CSSProperties, actions: ServiceActions, services: RootState.ServicesState };
-
-// function CustomizedInputBase(props: StyleProps & Props) {
-//   const { classes } = props;
-
-//   return (
-//     <Paper className={classes.root} elevation={1} style={props.styles}>
-//       <IconButton className={classes.iconButton} aria-label="Menu">
-//         <MenuIcon />
-//       </IconButton>
-//       <InputBase className={classes.input} placeholder="Enter key or search item"
-//         onChange={(event) => {
-//           props.actions.filterService(event.target.value);
-//         }} />
-//       <Divider className={classes.divider} />
-//       <IconButton className={classes.iconButton} aria-label="Search">
-//         <SearchIcon />
-//       </IconButton>
-//     </Paper>
-//   );
-// }
+interface Props { styles: React.CSSProperties, actions: typeof ServiceActions, services: RootState.ServicesState };
 
 const Search = (props: StyleProps & Props) => {
   const allServices = props.services.all.map(service => ({ value: service.id, label: service.text }));

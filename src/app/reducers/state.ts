@@ -5,6 +5,4 @@ export interface RootState {
   services: RootState.ServicesState;
 }
 
-export namespace RootState {
-  export type ServicesState = {all: ServiceModel[], filtered: ServiceModel[], searched: ServiceModel[]};
-}
+export type ServicesState = {all: ServiceModel[], filtered: ServiceModel[], searched: ServiceModel[]};
