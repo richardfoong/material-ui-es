@@ -1,12 +1,20 @@
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import Grid from '@material-ui/core/Grid';
 import FormLabel from '@material-ui/core/FormLabel';
 import { withStyles, createStyles } from '@material-ui/core/styles';
+
+// @ts-ignore
+import dragula from 'react-dragula';
+import 'react-dragula/dist/dragula.min.css';
+
 import * as PropTypes from 'prop-types';
 import { RootState } from 'app/reducers';
 import { CartIcon } from '@ap-icons/';
 import { ServiceActions } from 'app/actions';
 import { ServiceModel } from 'app/models';
+import RootRef from '@material-ui/core/RootRef';
+
 
 const styles = createStyles({
   root: {
@@ -51,17 +59,27 @@ interface Props {
 }
 
 const ServiceListComponent = ({ actions, classes, services }: Props) => {
+
+  useEffect(() => {
+    dragula([containerRef.current]);
+  }, []);
+
+  const containerRef = useRef(null);
   return (
-    <Grid container className={classes.root}>
-      <Grid container className={classes.parent} spacing={16}>
-        {services.filtered.map((value: ServiceModel) => (
-          <Grid key={value.id} item className={classes.item} xs={6} sm={4} md={3} xl={4}>
-            <Grid container className={classes.paper} direction="column" alignItems='center' onClick={() => actions.addServiceOnSearch(value)}>
-              <CartIcon {...styles.itemIcon} />
-              <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
-            </Grid>
+     <Grid container className={classes.root}> 
+      <Grid container className={classes.parent} spacing={16}> 
+        <RootRef rootRef={containerRef}>
+          <Grid container spacing={8} className="this-is-container" >
+            {services.filtered.map((value: ServiceModel) => (
+              <Grid key={value.id} item className={classes.item} xs={6} sm={4} md={3} xl={4}>
+                <Grid container className={classes.paper} direction="column" alignItems='center' onClick={() => actions.addServiceOnSearch(value)}>
+                  <CartIcon {...styles.itemIcon} />
+                  <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
+                </Grid>
+              </Grid>
+            ))}
           </Grid>
-        ))}
+        </RootRef>
       </Grid>
     </Grid>
   );
