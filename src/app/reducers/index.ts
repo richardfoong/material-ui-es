@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { RootState } from './state';
+import { RootState, ServicesState } from './state';
 import { servicesReducer } from './services';
 
-export { RootState };
+export { RootState, ServicesState };
 
 // NOTE: current type definition of Reducer in 'redux-actions' module
 // doesn't go well with redux@4

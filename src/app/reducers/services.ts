@@ -1,4 +1,4 @@
-import { RootState } from './state';
+import { ServicesState } from './state';
 import { handleActions } from 'redux-actions';
 import { Type as ServiceActionType} from '@ap-actions/';
 import { ServiceModel } from 'app/models';
@@ -37,15 +37,15 @@ const allServices = [{
   icon: '',
 }];
 
-export const initialState: RootState.ServicesState = {
+export const initialState: ServicesState = {
   all: allServices,
   filtered: allServices,
   searched: []
 };
 
-const getFilteredServices = (state: RootState.ServicesState, searched: ServiceModel[]) => state.all.filter(s => !searched.find((service:ServiceModel) => service.id === s.id));
+const getFilteredServices = (state: ServicesState, searched: ServiceModel[]) => state.all.filter(s => !searched.find((service:ServiceModel) => service.id === s.id));
 
-export const servicesReducer = handleActions<RootState.ServicesState, any>({
+export const servicesReducer = handleActions<ServicesState, any>({
   [ServiceActionType.FILTER_SERVICE_SEARCH]: (state, { payload = '' }) => {
     const { searched} = state;
     if (payload) {

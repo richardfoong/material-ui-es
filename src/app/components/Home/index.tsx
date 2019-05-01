@@ -3,12 +3,12 @@ import Grid from '@material-ui/core/Grid';
 import { ServiceList } from "app/components/ServiceList";
 import { Header } from "app/components/Header";
 import { SearchMain } from "app/components/Search";
-import { RootState } from 'app/reducers';
+import { ServicesState } from 'app/reducers';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 import { ServiceActions } from '@ap-actions/';
 
 export interface HomeProps {
-  services: RootState.ServicesState;
+  services: ServicesState;
   actions: typeof ServiceActions;
 }
 

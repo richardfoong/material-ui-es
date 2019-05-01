@@ -9,7 +9,7 @@ import dragula from 'react-dragula';
 import 'react-dragula/dist/dragula.min.css';
 
 import * as PropTypes from 'prop-types';
-import { RootState } from 'app/reducers';
+import { ServicesState } from 'app/reducers';
 import { CartIcon } from '@ap-icons/';
 import { ServiceActions } from 'app/actions';
 import { ServiceModel } from 'app/models';
@@ -53,7 +53,7 @@ const styles = createStyles({
 });
 
 interface Props {
-  services: RootState.ServicesState;
+  services: ServicesState;
   classes: { [className in keyof typeof styles]: string };
   actions: typeof ServiceActions;
 }

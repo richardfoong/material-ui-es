@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 import { FormLabel } from '@material-ui/core';
 import { ServiceActions } from '@ap-actions/';
-import { RootState } from '@ap-reducers/';
+import { ServicesState } from '@ap-reducers/';
 import Search from './search';
 
 const Styles = createStyles({
@@ -53,7 +53,7 @@ const BackgroundPanelComponent = ({ classes }: Props) => {
 };
 
 interface MainProps extends Props {
-  services: RootState.ServicesState;
+  services: ServicesState;
   actions: typeof ServiceActions;
 }
 

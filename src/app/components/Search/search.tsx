@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 // import SearchIcon from '@material-ui/icons/Search';
 import { ServiceActions } from '@ap-actions/';
 import Select from 'react-select';
-import { RootState } from '@ap-reducers/';
+import { ServicesState } from '@ap-reducers/';
 import Chip from '@material-ui/core/Chip';
 
 const Styles = {
@@ -34,7 +34,7 @@ const Styles = {
 
 interface StyleProps { classes: { [className in keyof typeof Styles]: string } };
 
-interface Props { styles: React.CSSProperties, actions: typeof ServiceActions, services: RootState.ServicesState };
+interface Props { styles: React.CSSProperties, actions: typeof ServiceActions, services: ServicesState };
 
 const Search = (props: StyleProps & Props) => {
   const allServices = props.services.all.map(service => ({ value: service.id, label: service.text }));
