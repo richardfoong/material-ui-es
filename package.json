@@ -4,13 +4,7 @@
   "private": true,
   "description": "A frontend boilerplate with React, Redux and Typescript",
   "homepage": "https://rokoroku.github.io/react-redux-typescript-boilerplate",
-  "keywords": [
-    "react",
-    "redux",
-    "typescript",
-    "boilerplate",
-    "todomvc"
-  ],
+  "keywords": ["react", "redux", "typescript", "boilerplate", "todomvc"],
   "main": "src/index.js",
   "scripts": {
     "predeploy": "npm run build",
@@ -58,8 +52,6 @@
     "postcss-reporter": "^6.0.1",
     "postcss-url": "^8.0.0",
     "prettier": "^1.15.3",
-    "react-hot-loader": "^4.6.3",
-    "redux-devtools-extension": "^2.13.7",
     "rimraf": "^2.6.3",
     "storybook-addon-specifications": "^2.1.2",
     "style-loader": "^0.23.1",
@@ -73,7 +65,9 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "react-hot-loader": "^4.6.3",
     "@material-ui/icons": "^3.0.2",
+    "redux-devtools-extension": "^2.13.7",
     "@types/dragula": "^2.1.34",
     "@types/react-router-dom": "^4.3.2",
     "@types/react-select": "^2.0.17",

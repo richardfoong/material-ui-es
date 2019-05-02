@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createHashHistory, History } from 'history';
 import { RootState } from 'app/reducers';
 import { Store } from 'redux';
-import { configureStore } from 'app/store';
+import { configureStore } from './app/store';
 import { Router } from 'react-router-dom';
 import { App } from './app';
 
@@ -12,11 +12,17 @@ import { App } from './app';
 const history = createHashHistory();
 const store = configureStore();
 
-const ProviderWrapper = ({ store, children, history }: { store: Store<RootState>, children: JSX.Element, history: History }) => (
+const ProviderWrapper = ({
+  store,
+  children,
+  history
+}: {
+  store: Store<RootState>;
+  children: JSX.Element;
+  history: History;
+}) => (
   <Provider store={store}>
-    <Router history={history}>
-      {children}
-    </Router>
+    <Router history={history}>{children}</Router>
   </Provider>
 );
 
