@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router';
 import { hot } from 'react-hot-loader';
-import Home from 'app/containers/Home';
+import Home from './containers/Home';
 import './app.scss';
 
 export const App = hot(module)(() => (
