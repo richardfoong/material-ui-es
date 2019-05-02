@@ -7,7 +7,7 @@ import { CartIcon } from '../../icons';
 
 const styles = createStyles({
   root: {
-    height: '5rem',
+    height: '4rem',
     backgroundColor: '#292D33',
     boxShadow: '0px 2px 3px rgba(0, 0, 0, 0.0393739)',
     width: '100%',
