@@ -5,7 +5,7 @@ import { createHashHistory, History } from 'history';
 import { RootState } from 'app/reducers';
 import { Store } from 'redux';
 import { configureStore } from './app/store';
-import { Router } from 'react-router';
+import { Router } from 'react-router-dom';
 import { App } from './app';
 
 // prepare store
