@@ -40,7 +40,7 @@ const HeaderComponent = ({ classes }: { classes: { [className in keyof typeof st
         className={classes.rightIconPanel}
         direction="row"
         alignContent="flex-end"
-        spacing={8}
+        spacing={24}
       >
         <Search />
         <CartIcon />

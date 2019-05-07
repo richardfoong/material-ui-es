@@ -9,7 +9,8 @@ import Search from './search';
 const Styles = createStyles({
   root: {
     height: '16rem',
-    background: 'radial-gradient(207.68px at 50% 18.87%, #006488 0%, #025572 100%), linear-gradient(180deg, #3E474D 0%, #292F33 100%);',
+    background:
+      'radial-gradient(207.68px at 50% 18.87%, #006488 0%, #025572 100%), linear-gradient(180deg, #3E474D 0%, #292F33 100%);'
   },
   welcomeText: {
     color: 'white',
@@ -19,7 +20,7 @@ const Styles = createStyles({
     fontSize: '1.125rem',
     lineHeight: '2rem',
     textAlign: 'center',
-    margin: 'auto auto 0.3rem auto',
+    margin: 'auto auto 0.3rem auto'
   },
   scanText: {
     fontFamily: 'AP Letter',
@@ -27,7 +28,7 @@ const Styles = createStyles({
     lineHeight: '3.5rem',
     textAlign: 'center',
     color: 'white',
-    margin: '0 auto auto auto',
+    margin: '0 auto auto auto'
   },
   search: {
     position: 'absolute',
@@ -36,20 +37,21 @@ const Styles = createStyles({
     width: '70%',
     transform: 'translateX(-50%)',
     borderRadius: '1rem',
+    fontFamily: 'Roboto'
   }
 });
 
 interface Props {
-  classes: { [className in keyof typeof Styles]: string },
-};
+  classes: { [className in keyof typeof Styles]: string };
+}
 
 const BackgroundPanelComponent = ({ classes }: Props) => {
   return (
-    <Grid container className={classes.root} direction='column'>
+    <Grid container className={classes.root} direction="column">
       <FormLabel className={classes.welcomeText}>Welcome to the new POS</FormLabel>
       <FormLabel className={classes.scanText}>Scan, Search, Sell</FormLabel>
     </Grid>
-  )
+  );
 };
 
 interface MainProps extends Props {
@@ -65,7 +67,7 @@ const Main = ({ classes, actions, services }: MainProps) => {
         <Search styles={Styles.search} actions={actions} services={services} />
       </Grid>
     </Grid>
-  )
+  );
 };
 
 export default withStyles(Styles)(Main);
