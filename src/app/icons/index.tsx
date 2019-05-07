@@ -45,3 +45,5 @@ export const SVGComponent = (props: SVGProps) => (
 );
 
 export const CartIcon = (props: React.CSSProperties) => <SVGComponent path={CART_ICON} styles={props} />
+
+export const ExpandMore = ({styles}: {styles?: React.CSSProperties}) => (<SvgIcon style={styles}> <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" /> </SvgIcon>);
