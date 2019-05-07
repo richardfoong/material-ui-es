@@ -28,7 +28,7 @@ const styles = createStyles({
   }
 });
 
-const HeaderComponent = ({ classes }: any) => {
+const HeaderComponent = ({ classes }: { classes: { [className in keyof typeof styles]: string } }) => {
   return (
     <Grid container className={classes.root} direction="row">
       <Logo className={classes.logo} />
