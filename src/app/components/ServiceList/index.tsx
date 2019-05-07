@@ -66,7 +66,7 @@ const ServiceListComponent = ({ actions, classes, services }: Props) => {
     <Grid container className={classes.root}>
       <Grid container className={classes.parent} spacing={16}>
         <RootRef rootRef={containerRef}>
-          <Grid container spacing={8} className="this-is-container">
+          <Grid container spacing={16} className="this-is-container">
             {services.filtered.map((value: ServiceModel) => (
               <Grid key={value.id} item className={classes.item} xs={6} sm={4} md={3} xl={4}>
                 <Grid

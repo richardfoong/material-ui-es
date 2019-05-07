@@ -16,29 +16,38 @@ const Styles = {
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    width: 400,
+    width: 400
   },
   input: {
-    marginLeft: 8,
-    flex: 1,
+    marginLeft: 16,
+    flex: 1
   },
   iconButton: {
-    padding: 10,
+    padding: 16
   },
   divider: {
     width: 1,
     height: 28,
-    margin: 4,
-  },
+    margin: 4
+  }
 };
 
-interface StyleProps { classes: { [className in keyof typeof Styles]: string } };
+interface StyleProps {
+  classes: { [className in keyof typeof Styles]: string };
+}
 
-interface Props { styles: React.CSSProperties, actions: typeof ServiceActions, services: ServicesState };
+interface Props {
+  styles: React.CSSProperties;
+  actions: typeof ServiceActions;
+  services: ServicesState;
+}
 
 const Search = (props: StyleProps & Props) => {
-  const allServices = props.services.all.map(service => ({ value: service.id, label: service.text }));
-  const searchedServices = props.services.searched.map(s => ({ value: s.id, label: s.text }));
+  const allServices = props.services.all.map((service) => ({
+    value: service.id,
+    label: service.text
+  }));
+  const searchedServices = props.services.searched.map((s) => ({ value: s.id, label: s.text }));
   const { setServicesForSearch, filterService, removeServiceFromSearch } = props.actions;
   return (
     <Select
@@ -48,7 +57,7 @@ const Search = (props: StyleProps & Props) => {
         setServicesForSearch(selectedOption.map((s: any) => s.value));
       }}
       options={allServices}
-      onInputChange={(e: string, {action}) => {
+      onInputChange={(e: string, { action }) => {
         if (action === 'input-change') {
           filterService(e);
         }
@@ -57,28 +66,46 @@ const Search = (props: StyleProps & Props) => {
       noOptionsMessage={() => null}
       autoFocus={false}
       components={{
-        Menu: () => null, DropdownIndicator: () => null,
+        Menu: () => null,
+        DropdownIndicator: () => null,
         MultiValueLabel: (base) => {
           // console.log('base:', base);
           return (
-            <Chip label={base.data.label} color="primary"
-              style={{ margin: 0, color: 'white', backgroundColor: '#008091', border: '1px solid #008091' }}
+            <Chip
+              label={base.data.label}
+              color="primary"
+              style={{
+                margin: 0,
+                color: 'white',
+                backgroundColor: '#008091',
+                border: '1px solid #008091'
+              }}
               onDelete={() => {
                 removeServiceFromSearch(base.data.value);
-              }} />);
+              }}
+            />
+          );
         }
       }}
-      styles={
-        {
-          multiValueRemove: (styles, { data }) => {
-            return { ...styles, backgroundColor: 'transparent', display: 'none' };
-          },
-          multiValue: (styles) => {
-            return { ...styles, backgroundColor: 'transparent' };
-          },
+      styles={{
+        multiValueRemove: (styles, { data }) => {
+          return { ...styles, backgroundColor: 'transparent', display: 'none' };
+        },
+        multiValue: (styles) => {
+          return { ...styles, backgroundColor: 'transparent' };
+        },
+        valueContainer: (styles) => {
+          return { ...styles, backgroundColor: 'transparent', marginLeft: '8px' };
+        },
+        control: (styles) => {
+          return { ...styles, borderRadius: '40px' };
+        },
+        indicatorSeparator: (styles) => {
+          return { ...styles, backgroundColor: 'transparent' };
         }
-      }
-    />);
+      }}
+    />
+  );
 };
 
 export default withStyles(Styles)(Search);
