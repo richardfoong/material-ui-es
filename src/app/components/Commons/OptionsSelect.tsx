@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -54,22 +55,32 @@ interface Props {
   options: {
     text: string;
     style?: React.CSSProperties;
-  }[]
+  }[];
+  extendable?: boolean;
 }
 
 export const OptionsSelect = withStyles(styles)((props: Props) => {
-  const { classes, title, titleStyle, style, options } = props;
+  const { extendable, classes, title, titleStyle, style, options } = props;
+  const [extended, setExtended] = useState(extendable);
   return (<Grid className={classes.root} container direction="column" style={style}>
     <Grid container direction="row">
       <FormLabel className={classes.title} style={titleStyle || {}}>{title}</FormLabel>
-      <ExpandMore styles={{color: '#008091', fontSize: '2rem', alignSelf: 'center', marginLeft: 'auto' }} />
-    </Grid>
-    <Grid container className={classes.optionContainer}>
       {
-        options.map((option) => (
-          <Grid item xs={4} className={classes.option} style={option.style || {}}>{option.text}</Grid>
-        ))
+        extendable ? <ExpandMore styles={{ color: '#008091', fontSize: '2rem', alignSelf: 'center', marginLeft: 'auto' }} onClick={() => setExtended(!extended)} /> : null
       }
     </Grid>
+    {
+      extended ?
+        <Grid container className={classes.optionContainer}>
+          {
+            options.map((option) => (
+              <Grid item xs={4} className={classes.option} style={option.style || {}}>{option.text}</Grid>
+            ))
+          }
+        </Grid> : null}
   </Grid>);
 });
+
+OptionsSelect.defaultProps = {
+  extendable: true,
+};
