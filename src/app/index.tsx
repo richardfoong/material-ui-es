@@ -3,9 +3,9 @@ import { Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import Home from './containers/Home';
 import './app.scss';
-import Demo from 'app/components/Demo';
-import { Header } from 'app/components/Header';
-import OptionsSelect from 'app/components/Demo/OptionsSelectDemo';
+import OptionsSelect from './components/Demo/OptionsSelectDemo';
+import Demo from './components/Demo';
+import { Header } from './components/Header';
 
 export const App = hot(module)(() => (
   <div>
