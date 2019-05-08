@@ -8,7 +8,7 @@ const allServices = [
   {
     id: 1,
     text: 'Sell stamps',
-    icon: <SellStamps />
+    icon: '',
   },
   {
     id: 2,
