@@ -20,9 +20,10 @@ const styles = createStyles({
     flexGrow: 1,
     alignItems: 'center',
     backgroundColor: '#F3F4F5',
-    maxWidth: '70%',
+    maxWidth: '700px',
+    width: '70%',
     alignSelf: 'center',
-    marginTop: '4rem'
+    marginTop: '2rem'
   },
   parent: {
     alignItems: 'center',

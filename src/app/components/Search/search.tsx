@@ -105,6 +105,14 @@ const Search = (props: StyleProps & Props) => {
             boxShadow: '0px 12px 20px rgba(0, 0, 0, 0.07);'
           };
         },
+
+        indicatorsContainer: (styles) => {
+          return {
+            ...styles,
+            paddingRight: '1rem'
+          };
+        },
+
         indicatorSeparator: (styles) => {
           return { ...styles, backgroundColor: 'transparent' };
         }
