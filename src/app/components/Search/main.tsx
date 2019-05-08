@@ -9,8 +9,7 @@ import Search from './search';
 const Styles = createStyles({
   root: {
     height: '16rem',
-    background:
-      'radial-gradient(207.68px at 50% 18.87%, #006488 0%, #025572 100%), linear-gradient(180deg, #3E474D 0%, #292F33 100%);'
+    background: 'linear-gradient(180deg, #034C8F 0%, #090E48 100%)'
   },
   welcomeText: {
     color: 'white',
@@ -28,16 +27,17 @@ const Styles = createStyles({
     lineHeight: '3.5rem',
     textAlign: 'center',
     color: 'white',
-    margin: '0 auto auto auto'
+    margin: '6rem auto auto auto'
   },
   search: {
     position: 'absolute',
     top: '19rem',
     left: '50%',
-    width: '70%',
+    width: '65%',
     transform: 'translateX(-50%)',
     borderRadius: '1rem',
-    fontFamily: 'Roboto'
+    fontFamily: 'Roboto',
+    color: '#736D6C'
   }
 });
 
@@ -48,8 +48,7 @@ interface Props {
 const BackgroundPanelComponent = ({ classes }: Props) => {
   return (
     <Grid container className={classes.root} direction="column">
-      <FormLabel className={classes.welcomeText}>Welcome to the new POS</FormLabel>
-      <FormLabel className={classes.scanText}>Scan, Search, Sell</FormLabel>
+      <FormLabel className={classes.scanText}>Hi Anne, Welcome to POST+</FormLabel>
     </Grid>
   );
 };

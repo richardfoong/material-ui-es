@@ -2,12 +2,13 @@ import { ServicesState } from './state';
 import { handleActions } from 'redux-actions';
 import { Type as ServiceActionType } from '../actions/';
 import { ServiceModel } from '../models';
+import { SellStamps } from '../../icons';
 
 const allServices = [
   {
     id: 1,
     text: 'Sell stamps',
-    icon: ''
+    icon: <SellStamps />
   },
   {
     id: 2,
@@ -31,7 +32,7 @@ const allServices = [
   },
   {
     id: 6,
-    text: 'Postage access',
+    text: 'Postage assess',
     icon: ''
   },
   {

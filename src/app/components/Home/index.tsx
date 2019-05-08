@@ -14,7 +14,7 @@ export interface HomeProps {
 
 const styles = createStyles({
   root: {
-    backgroundColor: 'lightgray'
+    backgroundColor: '#F3F4F5'
   }
 });
 
