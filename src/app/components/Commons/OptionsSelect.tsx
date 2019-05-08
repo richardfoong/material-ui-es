@@ -5,6 +5,7 @@ import { withStyles, createStyles } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
 import FormLabel from '@material-ui/core/FormLabel';
 import { ExpandMore, ExpandLess } from '../../icons';
+import { Expandable } from './Expandable';
 
 const styles = createStyles({
   root: {
@@ -66,38 +67,13 @@ interface Props {
     text: string;
     style?: React.CSSProperties;
   }[];
-  extendable?: boolean;
 }
 
 export const OptionsSelect = withStyles(styles)((props: Props) => {
-  const { extendable, classes, title, titleStyle, style, options } = props;
-  const [extended, setExtended] = useState(true);
+  const { classes, title, titleStyle, style, options } = props;
 
   return (
-    <Grid className={classes.root} container direction="column" style={style}>
-      <Grid container direction="row">
-        <FormLabel className={classes.title} style={titleStyle || {}}>
-          {title}
-        </FormLabel>
-        {extendable ? (
-          extended ? (
-            <ExpandLess
-              styles={styles.extendIcon}
-              onClick={() => {
-                setExtended(!extended);
-              }}
-            />
-          ) : (
-            <ExpandMore
-              styles={styles.extendIcon}
-              onClick={() => {
-                setExtended(!extended);
-              }}
-            />
-          )
-        ) : null}
-      </Grid>
-      <Collapse className={classes.collapse} in={extended} timeout={500}>
+    <Expandable title={title} titleStyle={titleStyle} style={style}>
           <Grid container className={classes.optionContainer}>
             {options.map((option) => (
               <Grid item xs={4} className={classes.option} style={option.style || {}}>
@@ -105,11 +81,6 @@ export const OptionsSelect = withStyles(styles)((props: Props) => {
               </Grid>
             ))}
           </Grid>
-      </Collapse>
-    </Grid>
+    </Expandable>
   );
 });
-
-OptionsSelect.defaultProps = {
-  extendable: true
-};
