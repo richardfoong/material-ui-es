@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
@@ -72,27 +72,6 @@ interface Props {
 export const OptionsSelect = withStyles(styles)((props: Props) => {
   const { extendable, classes, title, titleStyle, style, options } = props;
   const [extended, setExtended] = useState(true);
-  const [extending, setExtending] = useState(false);
-
-  const usePrevious = (value: any) => {
-    const ref = useRef(null);
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  };
-  const prevExtending = usePrevious(extending);
-
-  // useEffect(() => {
-  //   if (!prevExtending && extending) {
-  //     // hide
-  //     setExtended(false);
-  //   }
-  //   if (prevExtending && !extending) {
-  //     // show
-  //     setExtended(true);
-  //   }
-  // });
 
   return (
     <Grid className={classes.root} container direction="column" style={style}>
@@ -119,7 +98,6 @@ export const OptionsSelect = withStyles(styles)((props: Props) => {
         ) : null}
       </Grid>
       <Collapse className={classes.collapse} in={extended} timeout={500}>
-        {/* {extended ? ( */}
           <Grid container className={classes.optionContainer}>
             {options.map((option) => (
               <Grid item xs={4} className={classes.option} style={option.style || {}}>
@@ -127,7 +105,6 @@ export const OptionsSelect = withStyles(styles)((props: Props) => {
               </Grid>
             ))}
           </Grid>
-        {/* ) : null} */}
       </Collapse>
     </Grid>
   );
