@@ -2,28 +2,9 @@ import * as React from 'react';
 import { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
-import Collapse from '@material-ui/core/Collapse';
-import FormLabel from '@material-ui/core/FormLabel';
-import { ExpandMore, ExpandLess } from '../../icons';
 import { Expandable } from './Expandable';
 
 const styles = createStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: '0.5rem 1.5rem 0 2rem',
-    backgroundColor: 'white'
-  },
-  title: {
-    color: '#39302a',
-    fontSize: '1.69rem',
-    fontWeight: 400,
-    lineHeight: '90%',
-    marginTop: '1rem',
-    marginBottom: '1.5rem',
-    fontFamily: 'roboto'
-  },
   optionContainer: {
     alignItems: 'center'
   },
@@ -45,16 +26,6 @@ const styles = createStyles({
     textAlign: 'center',
     fontWeight: 700,
     margin: '0 auto'
-  },
-  extendIcon: {
-    color: '#008091',
-    fontSize: '2rem',
-    alignSelf: 'center',
-    marginLeft: 'auto',
-    cursor: 'pointer'
-  },
-  collapse: {
-    width: '80%',
   }
 });
 
@@ -71,16 +42,22 @@ interface Props {
 
 export const OptionsSelect = withStyles(styles)((props: Props) => {
   const { classes, title, titleStyle, style, options } = props;
-
+  const [subTitle, setSubTitle] = useState('');
   return (
-    <Expandable title={title} titleStyle={titleStyle} style={style}>
-          <Grid container className={classes.optionContainer}>
-            {options.map((option) => (
-              <Grid item xs={4} className={classes.option} style={option.style || {}}>
-                {option.text}
-              </Grid>
-            ))}
+    <Expandable title={title} titleStyle={titleStyle} style={style} subTitle={subTitle}>
+      <Grid container className={classes.optionContainer}>
+        {options.map((option) => (
+          <Grid
+            item
+            xs={4}
+            className={classes.option}
+            style={option.style || {}}
+            onClick={() => setSubTitle(option.text)}
+          >
+            {option.text}
           </Grid>
+        ))}
+      </Grid>
     </Expandable>
   );
 });

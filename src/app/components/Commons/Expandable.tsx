@@ -23,6 +23,11 @@ const styles = createStyles({
     marginBottom: '1.5rem',
     fontFamily: 'roboto'
   },
+  subTitle: {
+    margin: 'auto',
+    color: '#00ac3e',
+    fontSize: '1rem',
+  },
   extendIcon: {
     color: '#008091',
     fontSize: '2rem',
@@ -41,10 +46,21 @@ interface Props {
   title: string;
   titleStyle?: React.CSSProperties;
   collapseContainerStyle?: React.CSSProperties;
+  subTitle?: string;
+  subTitleStyle?: React.CSSProperties;
 }
 
 export const ExpandableComponent: StatelessComponent<Props> = (props) => {
-  const { classes, title, titleStyle, style, children, collapseContainerStyle } = props;
+  const {
+    classes,
+    title,
+    titleStyle,
+    style,
+    children,
+    collapseContainerStyle,
+    subTitle,
+    subTitleStyle
+  } = props;
   const [extended, setExtended] = useState(true);
 
   return (
@@ -52,6 +68,9 @@ export const ExpandableComponent: StatelessComponent<Props> = (props) => {
       <Grid container direction="row">
         <FormLabel className={classes.title} style={titleStyle || {}}>
           {title}
+        </FormLabel>
+        <FormLabel className={classes.subTitle} style={subTitleStyle}>
+          {subTitle}
         </FormLabel>
         {extended ? (
           <ExpandLess
@@ -81,9 +100,10 @@ export const ExpandableComponent: StatelessComponent<Props> = (props) => {
   );
 };
 
-
 ExpandableComponent.defaultProps = {
-  collapseContainerStyle: {}
+  collapseContainerStyle: {},
+  subTitle: '',
+  subTitleStyle: {},
 };
 
 export const Expandable = withStyles(styles)(ExpandableComponent);
