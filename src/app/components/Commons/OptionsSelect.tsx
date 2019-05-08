@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
+import Collapse from '@material-ui/core/Collapse';
 import FormLabel from '@material-ui/core/FormLabel';
 import { ExpandMore, ExpandLess } from '../../icons';
 
@@ -10,7 +11,6 @@ const styles = createStyles({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'baseline',
     padding: '0.5rem 1.5rem 0 2rem',
     backgroundColor: 'white'
   },
@@ -27,7 +27,7 @@ const styles = createStyles({
     alignItems: 'center'
   },
   option: {
-    height: '3rem',
+    minHeight: '3rem',
     lineHeight: '3rem',
     display: 'flex',
     flexDirection: 'row',
@@ -51,6 +51,9 @@ const styles = createStyles({
     alignSelf: 'center',
     marginLeft: 'auto',
     cursor: 'pointer'
+  },
+  collapse: {
+    width: '80%',
   }
 });
 
@@ -68,7 +71,29 @@ interface Props {
 
 export const OptionsSelect = withStyles(styles)((props: Props) => {
   const { extendable, classes, title, titleStyle, style, options } = props;
-  const [extended, setExtended] = useState(extendable);
+  const [extended, setExtended] = useState(true);
+  const [extending, setExtending] = useState(false);
+
+  const usePrevious = (value: any) => {
+    const ref = useRef(null);
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  };
+  const prevExtending = usePrevious(extending);
+
+  // useEffect(() => {
+  //   if (!prevExtending && extending) {
+  //     // hide
+  //     setExtended(false);
+  //   }
+  //   if (prevExtending && !extending) {
+  //     // show
+  //     setExtended(true);
+  //   }
+  // });
+
   return (
     <Grid className={classes.root} container direction="column" style={style}>
       <Grid container direction="row">
@@ -77,21 +102,33 @@ export const OptionsSelect = withStyles(styles)((props: Props) => {
         </FormLabel>
         {extendable ? (
           extended ? (
-            <ExpandLess styles={styles.extendIcon} onClick={() => setExtended(!extended)} />
+            <ExpandLess
+              styles={styles.extendIcon}
+              onClick={() => {
+                setExtended(!extended);
+              }}
+            />
           ) : (
-            <ExpandMore styles={styles.extendIcon} onClick={() => setExtended(!extended)} />
+            <ExpandMore
+              styles={styles.extendIcon}
+              onClick={() => {
+                setExtended(!extended);
+              }}
+            />
           )
         ) : null}
       </Grid>
-      {extended ? (
-        <Grid container className={classes.optionContainer}>
-          {options.map((option) => (
-            <Grid item xs={4} className={classes.option} style={option.style || {}}>
-              {option.text}
-            </Grid>
-          ))}
-        </Grid>
-      ) : null}
+      <Collapse className={classes.collapse} in={extended} timeout={500}>
+        {/* {extended ? ( */}
+          <Grid container className={classes.optionContainer}>
+            {options.map((option) => (
+              <Grid item xs={4} className={classes.option} style={option.style || {}}>
+                {option.text}
+              </Grid>
+            ))}
+          </Grid>
+        {/* ) : null} */}
+      </Collapse>
     </Grid>
   );
 });
