@@ -1,7 +1,8 @@
 import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
-import FormLabel from '@material-ui/core/FormLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import { Link } from 'react-router-dom';
 import { Logo, Search } from '../../icons';
 import { CartIcon } from '../../icons';
 
@@ -28,13 +29,23 @@ const styles = createStyles({
   }
 });
 
-const HeaderComponent = ({ classes }: { classes: { [className in keyof typeof styles]: string } }) => {
+const HeaderComponent = ({
+  classes
+}: {
+  classes: { [className in keyof typeof styles]: string };
+}) => {
   return (
     <Grid container className={classes.root} direction="row">
       <Logo className={classes.logo} />
-      <FormLabel className={classes.labelText}>Cart</FormLabel>
-      <FormLabel className={classes.labelText}>Transactions</FormLabel>
-      <FormLabel className={classes.labelText}>Cash</FormLabel>
+      <Link to="/">
+        <MenuItem className={classes.labelText}>Home</MenuItem>
+      </Link>
+      <Link to="/demo/OptionsSelect">
+        <MenuItem className={classes.labelText}>Common Demo</MenuItem>
+      </Link>
+      <Link to="/demo">
+        <MenuItem className={classes.labelText}>Rich's Demo</MenuItem>
+      </Link>
       <Grid
         container
         className={classes.rightIconPanel}

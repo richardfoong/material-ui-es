@@ -56,6 +56,7 @@ export const Cart = (props: SvgIconProps) => (
 interface SVGProps {
   path: string;
   styles: React.CSSProperties;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 export const SVGComponent = (props: SVGProps) => <img src={props.path} style={props.styles} />;

@@ -9,6 +9,7 @@ import { Header } from './components/Header';
 
 export const App = hot(module)(() => (
   <div>
+    <Header />
     <Route exact path="/" component={Home} />
     <Route path="/headers" component={Header} />
     <Route exact path="/demo" component={Demo} />
