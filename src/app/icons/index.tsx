@@ -1,10 +1,10 @@
 import * as React from 'react';
-import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
+import SvgIcon  from '@material-ui/core/SvgIcon';
 import SearchIcon from '@material-ui/icons/Search';
 const CART_ICON = require('../../assets/icons/ap-cart.svg');
 const LOGO_ICON = require('../../assets/icons/ap-logo.svg');
 
-interface SVGProps {
+export interface SVGProps {
   path?: string;
   styles?: React.CSSProperties;
   onClick?: (e: React.MouseEvent) => void;

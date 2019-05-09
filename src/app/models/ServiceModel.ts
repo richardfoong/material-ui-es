@@ -1,5 +1,7 @@
+import { SVGProps } from '../icons';
+
 export interface ServiceModel {
   id: number;
   text: string;
-  icon: string;
+  icon: (props: SVGProps) => JSX.Element;
 }
