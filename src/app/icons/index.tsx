@@ -5,9 +5,27 @@ const CART_ICON = require('../../assets/icons/ap-cart.svg');
 
 export const Logo = (props: SvgIconProps) => (
   <SvgIcon {...props}>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5312 28.875C24.9353 28.875 30.9375 22.8728 30.9375 15.4688C30.9375 8.06468 24.9353 2.0625 17.5312 2.0625C10.1272 2.0625 4.125 8.06468 4.125 15.4688C4.125 22.8728 10.1272 28.875 17.5312 28.875Z" fill="white" />
-    <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="33">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M31.3884 32.6826C32.1027 32.6826 32.6828 32.1032 32.6828 31.3889V1.61131C32.6828 0.896675 32.1027 0.317261 31.3884 0.317261H1.61206C0.896797 0.317261 0.317383 0.896675 0.317383 1.61131V31.3889C0.317383 32.1032 0.896797 32.6826 1.61206 32.6826H31.3884ZM12.6924 26.3365C8.79671 24.8311 6.02892 20.997 6.02892 16.4992C6.02892 12.002 8.79671 8.16816 12.6924 6.66341V26.3365ZM16.4158 5.71149C16.1238 5.71149 15.8338 5.72203 15.5482 5.74374V6.49081H15.5841V6.57437H15.6385C17.0717 6.58443 18.4069 6.96237 19.5353 7.60829C21.5366 8.84186 22.8519 10.9756 22.8333 13.3916C22.8233 14.8064 22.357 16.1175 21.5664 17.2029C20.2195 18.8695 18.0393 19.9496 15.5841 19.9471V20.1836C15.5721 20.1836 15.5601 20.1836 15.5482 20.1836V26.9373C15.8338 26.9622 16.1238 26.9711 16.4158 26.9711C20.167 26.9711 23.4626 24.9991 25.3348 22.0277C26.5035 20.365 27.1868 18.3565 27.1868 16.1934C27.1868 12.2543 24.9198 8.82798 21.5811 7.06931C20.054 6.20465 18.2919 5.71149 16.4158 5.71149Z" fill="white" />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M17.5312 28.875C24.9353 28.875 30.9375 22.8728 30.9375 15.4688C30.9375 8.06468 24.9353 2.0625 17.5312 2.0625C10.1272 2.0625 4.125 8.06468 4.125 15.4688C4.125 22.8728 10.1272 28.875 17.5312 28.875Z"
+      fill="white"
+    />
+    <mask
+      id="mask0"
+      mask-type="alpha"
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="33"
+      height="33"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M31.3884 32.6826C32.1027 32.6826 32.6828 32.1032 32.6828 31.3889V1.61131C32.6828 0.896675 32.1027 0.317261 31.3884 0.317261H1.61206C0.896797 0.317261 0.317383 0.896675 0.317383 1.61131V31.3889C0.317383 32.1032 0.896797 32.6826 1.61206 32.6826H31.3884ZM12.6924 26.3365C8.79671 24.8311 6.02892 20.997 6.02892 16.4992C6.02892 12.002 8.79671 8.16816 12.6924 6.66341V26.3365ZM16.4158 5.71149C16.1238 5.71149 15.8338 5.72203 15.5482 5.74374V6.49081H15.5841V6.57437H15.6385C17.0717 6.58443 18.4069 6.96237 19.5353 7.60829C21.5366 8.84186 22.8519 10.9756 22.8333 13.3916C22.8233 14.8064 22.357 16.1175 21.5664 17.2029C20.2195 18.8695 18.0393 19.9496 15.5841 19.9471V20.1836C15.5721 20.1836 15.5601 20.1836 15.5482 20.1836V26.9373C15.8338 26.9622 16.1238 26.9711 16.4158 26.9711C20.167 26.9711 23.4626 24.9991 25.3348 22.0277C26.5035 20.365 27.1868 18.3565 27.1868 16.1934C27.1868 12.2543 24.9198 8.82798 21.5811 7.06931C20.054 6.20465 18.2919 5.71149 16.4158 5.71149Z"
+        fill="white"
+      />
     </mask>
     <g mask="url(#mask0)">
       <rect x="-1.03125" y="0.317261" width="35" height="34" fill="#DC1928" />
@@ -38,10 +56,29 @@ export const Cart = (props: SvgIconProps) => (
 interface SVGProps {
   path: string;
   styles: React.CSSProperties;
-};
+  onClick?: (e: React.MouseEvent) => void;
+}
 
-export const SVGComponent = (props: SVGProps) => (
-  <img src={props.path} style={props.styles} />
+export const SVGComponent = (props: SVGProps) => <img src={props.path} style={props.styles} />;
+
+export const CartIcon = (props: React.CSSProperties) => (
+  <SVGComponent path={CART_ICON} styles={props} />
 );
 
-export const CartIcon = (props: React.CSSProperties) => <SVGComponent path={CART_ICON} styles={props} />
+interface SVGIconProps {
+  styles?: React.CSSProperties;
+  onClick?: (e: React.MouseEvent) => void;
+}
+
+export const ExpandMore = ({ styles, onClick = () => {} }: SVGIconProps) => (
+  <SvgIcon style={styles} onClick={onClick}>
+    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+  </SvgIcon>
+);
+
+export const ExpandLess = ({ styles, onClick = () => {} }: SVGIconProps) => (
+  <SvgIcon style={styles} onClick={onClick}>
+    <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" />
+    <path d="M0 0h24v24H0z" fill="none" />
+  </SvgIcon>
+);

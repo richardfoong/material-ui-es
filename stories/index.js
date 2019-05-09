@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { Button } from '@storybook/react/demo';
 import { Header } from '../src/app/components/Header';
 import Home from '../src/app/containers/Home';
-
+import { OptionsSelect } from '../src/app/components/Commons';
 
 storiesOf('Button', module)
   .addParameters({ options: { panelPosition: 'bottom' } })
@@ -16,4 +16,5 @@ storiesOf('Button', module)
     </Button>
   ))
   .add('Header', () => <Header />)
-  .add('Home', () => (<Home />))
+  .add('Home', () => <Home />)
+  .add('OptionsSelect', () => <OptionsSelect />);
