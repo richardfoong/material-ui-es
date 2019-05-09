@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from 'react-router-dom';
-import { Logo, Search } from '../../icons';
+import { Logo, SearchMaterialIcon } from '../../icons';
 import { CartIcon } from '../../icons';
 
 const styles = createStyles({
@@ -26,6 +26,9 @@ const styles = createStyles({
   rightIconPanel: {
     width: 'auto',
     margin: '0 1rem 0 auto'
+  },
+  searchIcon: {
+    color: 'white',
   }
 });
 
@@ -36,7 +39,7 @@ const HeaderComponent = ({
 }) => {
   return (
     <Grid container className={classes.root} direction="row">
-      <Logo className={classes.logo} />
+      <Logo styles={styles.logo} />
       <Link to="/">
         <MenuItem className={classes.labelText}>Home</MenuItem>
       </Link>
@@ -53,7 +56,7 @@ const HeaderComponent = ({
         alignContent="flex-end"
         spacing={24}
       >
-        <Search />
+        <SearchMaterialIcon styles={styles.searchIcon} />
         <CartIcon />
       </Grid>
     </Grid>

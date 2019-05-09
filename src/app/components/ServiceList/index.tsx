@@ -76,7 +76,7 @@ const ServiceListComponent = ({ actions, classes, services }: Props) => {
                   alignItems="center"
                   onClick={() => actions.addServiceOnSearch(value)}
                 >
-                  <CartIcon {...styles.itemIcon} />
+                  <CartIcon styles={styles.itemIcon} />
                   <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
                 </Grid>
               </Grid>
