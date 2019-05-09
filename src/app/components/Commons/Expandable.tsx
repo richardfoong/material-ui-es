@@ -12,7 +12,9 @@ const styles = createStyles({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: '0.5rem 1.5rem 0 2rem',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    width: '75%',
+    margin: 'auto',
   },
   title: {
     color: '#39302a',
