@@ -5,6 +5,9 @@ import { withStyles, createStyles } from '@material-ui/core/styles';
 import { Expandable } from './Expandable';
 
 const styles = createStyles({
+  expendableStyle: {
+    width: '75%'
+  },
   optionContainer: {
     alignItems: 'center'
   },
@@ -44,7 +47,12 @@ export const OptionsSelect = withStyles(styles)((props: Props) => {
   const { classes, title, titleStyle, style, options } = props;
   const [subTitle, setSubTitle] = useState('');
   return (
-    <Expandable title={title} titleStyle={titleStyle} style={style} subTitle={subTitle}>
+    <Expandable
+      title={title}
+      titleStyle={titleStyle}
+      style={{ ...styles.expendableStyle, ...style }}
+      subTitle={subTitle}
+    >
       <Grid container className={classes.optionContainer}>
         {options.map((option) => (
           <Grid

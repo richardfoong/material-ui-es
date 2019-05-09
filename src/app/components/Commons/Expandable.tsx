@@ -13,7 +13,6 @@ const styles = createStyles({
     justifyContent: 'space-between',
     padding: '0.5rem 1.5rem 0 2rem',
     backgroundColor: 'white',
-    width: '75%',
     margin: 'auto',
   },
   title: {
