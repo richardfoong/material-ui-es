@@ -8,7 +8,7 @@ import Search from './search';
 
 const Styles = createStyles({
   root: {
-    height: '16rem',
+    height: '15.5rem',
     background: 'linear-gradient(180deg, #034C8F 0%, #090E48 100%)'
   },
   welcomeText: {
@@ -27,17 +27,34 @@ const Styles = createStyles({
     lineHeight: '3.5rem',
     textAlign: 'center',
     color: 'white',
-    margin: '6rem auto auto auto'
+    margin: '6rem 1rem auto 1rem'
   },
   search: {
     position: 'absolute',
-    top: '19rem',
+    top: '18rem',
     left: '50%',
+    maxWidth: '700px',
     width: '65%',
     transform: 'translateX(-50%)',
     borderRadius: '1rem',
     fontFamily: 'Roboto',
     color: '#736D6C'
+  },
+
+  categoryDivider: {
+    display: 'flex',
+    height: '2.5rem',
+    color: '#535F67',
+    fontFamily: 'Roboto',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    borderBottom: '.5px solid #C6C6C6',
+    width: '65%',
+    maxWidth: '650px',
+    textAlign: 'left',
+    marginTop: '4.6rem',
+    marginLeft: 'auto',
+    marginRight: 'auto'
   }
 });
 
@@ -62,6 +79,7 @@ const Main = ({ classes, actions, services }: MainProps) => {
   return (
     <Grid container>
       <BackgroundPanelComponent classes={classes} />
+      <FormLabel className={classes.categoryDivider}>Popular services</FormLabel>
       <Grid className={classes.search}>
         <Search styles={Styles.search} actions={actions} services={services} />
       </Grid>

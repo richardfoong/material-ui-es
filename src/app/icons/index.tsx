@@ -1,7 +1,7 @@
 import * as React from 'react';
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
 
-const CART_ICON = require('../../assets/icons/ap-cart.svg');
+const CART_ICON = require('../../assets/icons/Iconset/ap-cart.svg');
 
 export const Logo = (props: SvgIconProps) => (
   <SvgIcon {...props} viewBox="0 0 32 32">
