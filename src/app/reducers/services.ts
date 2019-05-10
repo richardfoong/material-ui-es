@@ -2,47 +2,48 @@ import { ServicesState } from './state';
 import { handleActions } from 'redux-actions';
 import { Type as ServiceActionType } from '../actions/';
 import { ServiceModel } from '../models';
+import { CartIcon } from '../icons';
 
-const allServices = [
+const allServices: ServiceModel[] = [
   {
     id: 1,
     text: 'Sell stamps',
-    icon: ''
+    icon: CartIcon,
   },
   {
     id: 2,
     text: 'Article tracking',
-    icon: ''
+    icon: CartIcon,
   },
   {
     id: 3,
     text: 'Product sale',
-    icon: ''
+    icon: CartIcon,
   },
   {
     id: 4,
     text: 'Billpay',
-    icon: ''
+    icon: CartIcon,
   },
   {
     id: 5,
     text: 'Police check',
-    icon: ''
+    icon: CartIcon,
   },
   {
     id: 6,
     text: 'Postage access',
-    icon: ''
+    icon: CartIcon,
   },
   {
     id: 7,
     text: 'Customer search',
-    icon: ''
+    icon: CartIcon,
   },
   {
     id: 8,
     text: 'Help',
-    icon: ''
+    icon: CartIcon,
   }
 ];
 

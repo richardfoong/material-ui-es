@@ -26,5 +26,5 @@
       "@ap-utils/*": ["./app/utils"],
     }
   },
-  "exclude": ["build", "node_modules", "src/app/components/Demo"]
+  "exclude": ["build", "node_modules", "src/app/components/Demo/*.tsx"]
 }
