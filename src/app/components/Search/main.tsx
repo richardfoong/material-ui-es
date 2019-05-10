@@ -8,9 +8,8 @@ import Search from './search';
 
 const Styles = createStyles({
   root: {
-    height: '16rem',
-    background:
-      'radial-gradient(207.68px at 50% 18.87%, #006488 0%, #025572 100%), linear-gradient(180deg, #3E474D 0%, #292F33 100%);'
+    height: '15.5rem',
+    background: 'linear-gradient(180deg, #034C8F 0%, #090E48 100%)'
   },
   welcomeText: {
     color: 'white',
@@ -28,16 +27,34 @@ const Styles = createStyles({
     lineHeight: '3.5rem',
     textAlign: 'center',
     color: 'white',
-    margin: '0 auto auto auto'
+    margin: '6rem 1rem auto 1rem'
   },
   search: {
     position: 'absolute',
-    top: '19rem',
+    top: '18rem',
     left: '50%',
-    width: '70%',
+    maxWidth: '700px',
+    width: '65%',
     transform: 'translateX(-50%)',
     borderRadius: '1rem',
-    fontFamily: 'Roboto'
+    fontFamily: 'Roboto',
+    color: '#736D6C'
+  },
+
+  categoryDivider: {
+    display: 'flex',
+    height: '2.5rem',
+    color: '#535F67',
+    fontFamily: 'Roboto',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    borderBottom: '.5px solid #C6C6C6',
+    width: '65%',
+    maxWidth: '650px',
+    textAlign: 'left',
+    marginTop: '4.6rem',
+    marginLeft: 'auto',
+    marginRight: 'auto'
   }
 });
 
@@ -48,8 +65,7 @@ interface Props {
 const BackgroundPanelComponent = ({ classes }: Props) => {
   return (
     <Grid container className={classes.root} direction="column">
-      <FormLabel className={classes.welcomeText}>Welcome to the new POS</FormLabel>
-      <FormLabel className={classes.scanText}>Scan, Search, Sell</FormLabel>
+      <FormLabel className={classes.scanText}>Hi Anne, Welcome to POST+</FormLabel>
     </Grid>
   );
 };
@@ -63,6 +79,7 @@ const Main = ({ classes, actions, services }: MainProps) => {
   return (
     <Grid container>
       <BackgroundPanelComponent classes={classes} />
+      <FormLabel className={classes.categoryDivider}>Popular services</FormLabel>
       <Grid className={classes.search}>
         <Search styles={Styles.search} actions={actions} services={services} />
       </Grid>

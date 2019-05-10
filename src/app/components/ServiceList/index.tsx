@@ -19,10 +19,11 @@ const styles = createStyles({
   root: {
     flexGrow: 1,
     alignItems: 'center',
-    backgroundColor: 'lightgray',
+    backgroundColor: '#F3F4F5',
+    maxWidth: '700px',
     width: '70%',
     alignSelf: 'center',
-    marginTop: '3rem'
+    marginTop: '2rem'
   },
   parent: {
     alignItems: 'center',
@@ -32,21 +33,25 @@ const styles = createStyles({
     height: '7rem',
     backgroundColor: 'white',
     margin: 'auto',
-    boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.2)',
-    borderRadius: '3px'
+    marginBottom: '1rem',
+    marginTop: '1rem',
+    boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.15)',
+    borderRadius: '60px',
+    maxWidth: '114px'
   },
   item: {},
   itemLabel: {
+    display: 'flex',
+    justifyContent: 'space-around',
     marginBottom: 'auto',
-    fontFamily: 'AP Letter',
-    fontSize: '1.125rem',
-    lineHeight: '1.25rem',
-    textAlign: 'center',
+    fontFamily: 'Roboto',
+    fontSize: '1rem',
+    lineHeight: '1.5rem',
     color: '#382F2D'
   },
   itemIcon: {
     marginTop: 'auto',
-    marginBottom: '0.5rem'
+    marginBottom: 'auto'
   }
 });
 
@@ -79,6 +84,7 @@ const ServiceListComponent = ({ actions, classes, services }: Props) => {
                   <value.icon styles={styles.itemIcon} />
                   <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
                 </Grid>
+                <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
               </Grid>
             ))}
           </Grid>

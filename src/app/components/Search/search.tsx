@@ -16,18 +16,18 @@ const Styles = {
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    width: 400
+    width: 200
   },
   input: {
     marginLeft: 16,
     flex: 1
   },
   iconButton: {
-    padding: 16
+    padding: 24
   },
   divider: {
     width: 1,
-    height: 28,
+    height: 16,
     margin: 4
   }
 };
@@ -62,7 +62,7 @@ const Search = (props: StyleProps & Props) => {
           filterService(e);
         }
       }}
-      placeholder="Enter key or search item"
+      placeholder="Search for a product or service"
       noOptionsMessage={() => null}
       autoFocus={false}
       components={{
@@ -98,8 +98,21 @@ const Search = (props: StyleProps & Props) => {
           return { ...styles, backgroundColor: 'transparent', marginLeft: '8px' };
         },
         control: (styles) => {
-          return { ...styles, borderRadius: '40px' };
+          return {
+            ...styles,
+            borderRadius: '40px',
+            height: '4rem',
+            boxShadow: '0px 12px 20px rgba(0, 0, 0, 0.07);'
+          };
         },
+
+        indicatorsContainer: (styles) => {
+          return {
+            ...styles,
+            paddingRight: '1rem'
+          };
+        },
+
         indicatorSeparator: (styles) => {
           return { ...styles, backgroundColor: 'transparent' };
         }
