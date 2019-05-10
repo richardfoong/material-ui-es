@@ -83,7 +83,6 @@ const ServiceListComponent = ({ actions, classes, services }: Props) => {
                   <value.icon styles={styles.itemIcon} />
                   <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
                 </Grid>
-                <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
               </Grid>
             ))}
           </Grid>
