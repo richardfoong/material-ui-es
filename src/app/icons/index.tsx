@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import SvgIcon  from '@material-ui/core/SvgIcon';
-import SearchIcon from '@material-ui/icons/Search';
-const CART_ICON = require('../../assets/icons/ap-cart.svg');
-const LOGO_ICON = require('../../assets/icons/ap-logo.svg');
+import { SvgIconProps } from '@material-ui/core/SvgIcon';
 
+import SearchIcon from '@material-ui/icons/Search';
 const CART_ICON = require('../../assets/icons/Iconset/ap-cart.svg');
+const LOGO_ICON = require('../../assets/icons/ap-logo.svg');
 
 export const Menu = (props: SvgIconProps) => (
   <SvgIcon {...props}>
@@ -319,15 +319,12 @@ export const SellStamps = (props: SvgIconProps) => (
 );
 
 interface SVGProps {
-  path: string;
-  styles: React.CSSProperties;
+  path?: string;
+  styles?: React.CSSProperties;
 }
 
 export const SVGComponent = (props: SVGProps) => <img src={props.path} style={props.styles} />;
 
-export const CartIcon = (props: React.CSSProperties) => (
-  <SVGComponent path={CART_ICON} styles={props} />
-);
 export const Logo = (props: SVGProps) => <SVGComponent path={LOGO_ICON} styles={props.styles} />
 
 export const CartIcon = (props: SVGProps) => (

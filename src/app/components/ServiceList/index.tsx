@@ -10,7 +10,6 @@ import 'react-dragula/dist/dragula.min.css';
 
 import * as PropTypes from 'prop-types';
 import { ServicesState } from 'app/reducers';
-import { CartIcon } from '../../icons/';
 import { ServiceActions } from '../../actions';
 import { ServiceModel } from '../../models';
 import RootRef from '@material-ui/core/RootRef';
@@ -84,7 +83,6 @@ const ServiceListComponent = ({ actions, classes, services }: Props) => {
                   <value.icon styles={styles.itemIcon} />
                   <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
                 </Grid>
-                <FormLabel className={classes.itemLabel}>{value.text}</FormLabel>
               </Grid>
             ))}
           </Grid>
