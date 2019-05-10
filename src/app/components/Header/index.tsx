@@ -2,8 +2,10 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, createStyles } from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Menu, Logo, Search } from '../../icons';
-import { Cart } from '../../icons';
+import { Menu } from '../../icons';
+import MenuItem from '@material-ui/core/MenuItem';
+import { Link } from 'react-router-dom';
+import { Logo, SearchMaterialIcon, CartIcon } from '../../icons';
 
 const styles = createStyles({
   root: {
@@ -27,15 +29,30 @@ const styles = createStyles({
     width: 'auto',
     padding: '0rem 0rem',
     margin: '0 1rem 0 auto'
+  },
+  searchIcon: {
+    color: 'white',
   }
 });
 
-const HeaderComponent = ({ classes }: any) => {
+const HeaderComponent = ({
+  classes
+}: {
+  classes: { [className in keyof typeof styles]: string };
+}) => {
   return (
     <Grid container className={classes.root} direction="row">
-      <Menu className={classes.logo} />
-      <Logo className={classes.logo} />
+      <Logo styles={styles.logo} />
       <FormLabel className={classes.labelText}>12:00am Tuesday 2 April 2019. WCC: 350748</FormLabel>
+      <Link to="/">
+        <MenuItem className={classes.labelText}>Home</MenuItem>
+      </Link>
+      <Link to="/demo/OptionsSelect">
+        <MenuItem className={classes.labelText}>Common Demo</MenuItem>
+      </Link>
+      <Link to="/demo">
+        <MenuItem className={classes.labelText}>Rich's Demo</MenuItem>
+      </Link>
       <Grid
         container
         className={classes.rightIconPanel}
@@ -43,8 +60,8 @@ const HeaderComponent = ({ classes }: any) => {
         alignContent="flex-end"
         spacing={24}
       >
-        <Search className={classes.logo} />
-        <Cart className={classes.logo} />
+        <SearchMaterialIcon styles={styles.searchIcon} />
+        <CartIcon />
       </Grid>
     </Grid>
   );
